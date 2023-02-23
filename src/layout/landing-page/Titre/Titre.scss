@@ -1,0 +1,56 @@
+@import '../../../style/variables.scss';
+.titre{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    .game-draw{
+        width: 35%;
+    }
+    .introduction-text{
+        padding-left: 2.5rem;
+        width: 50%;
+        font-family: 'Quicksand', sans-serif;
+        font-size: 3rem;
+        position: relative;
+        padding-right: 2.5rem;
+        h1{
+            position: relative;
+            &:hover #gaming-console-clipart{
+                opacity: 1;
+                visibility: visible;
+            }
+            #gaming-console-clipart{
+                z-index: -1;
+                position: absolute;
+                width: 8.5rem;
+                top: 6rem;
+                left: 4.5rem;
+                transition: all 1s;
+            }
+            
+
+            #sheet-clipart{
+                z-index: -1;
+                position: absolute;
+                width: 8.5rem;
+                top: -4.2rem;
+                left: 24.4rem;
+            }
+        }
+        
+        .quote{
+            font-family: Imprima , sans-serif;
+            text-align: justify;
+            color: $color-black-1;
+            font-size: 2.3rem;
+            padding-left: 14rem;
+        }
+        .quoter{
+            color: $color-quoter;
+            font-size: 1.3rem;
+            text-align: end;
+            margin-bottom: 2rem;
+        }
+    }
+}

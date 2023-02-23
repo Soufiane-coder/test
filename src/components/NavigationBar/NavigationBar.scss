@@ -1,0 +1,27 @@
+@import '../../style/variables.scss';
+
+.navigation-bar{
+    z-index: 1000;
+    position: fixed;
+    right: -5rem;
+    top: 2rem;
+    width: 10rem;
+    height: 20rem;
+    padding: 30px 10px;
+    background-color: $color-secondary;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .icon{
+        display: inline-block;
+        padding: 5px 0px;
+        width: (20rem - 5rem) / 4;
+        .cls-1{
+            fill: $color-white-1;
+        }
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}

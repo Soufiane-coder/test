@@ -1,0 +1,29 @@
+@import '../../../style/variables.scss';
+@import '../../../style/mixins.scss';
+.remember__section{
+    padding: 0rem 7rem;
+    background-color: $color-white-1;
+    &--big-title{
+        @include description-titre;
+        font-size: 8rem;
+    }
+    &--description{
+        display: flex;
+        padding: 4rem 0rem;
+        padding-bottom: 10rem;
+        svg{
+            width: 30%;
+            height: auto;
+        }   
+
+        &--motivation{
+            color: $color-quoter;
+            width: 66%;
+            text-align: right;
+            padding-left: 10rem;
+            font-weight: 600;
+            font-size: 2rem;
+        }
+    }
+    
+}

@@ -1,13 +1,63 @@
+@font-face {
+    font-family: Quicksand;
+    src: url(../public/Quicksand-VariableFont_wght.ttf);
+}
 
+@font-face {
+    font-family: Imprima;
+    src: url(../public/Imprima-Regular.ttf);
+}
 
+@font-face {
+    font-family: DancingScript;
+    src: url(../public/DancingScript-VariableFont_wght.ttf);
+    }
+
+@import './style/variables.scss';
 *{
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
 }
 
+
 body{
-    font-family: 'Quicksand';
-    font-size: 62.5%;
+    
+    font-family: Quicksand, sans-serif;
     overflow-x: hidden;
+    a:link, a:visited{
+        text-decoration: none;
+    }
+    .color-yellow{
+        color: $color-secondary;
+    }
+    .color-green{
+        color: $color-primary;
+    }
+    .color-blue{
+        color: $color-tertiary;
+    }
+    .color-red{
+        color: $color-quaternary;
+    }
+
+    &::-webkit-scrollbar {
+        width: 15px;
+    }
+    &::-webkit-scrollbar-track {
+    background: $color-white-1;
+        width: 15px;
+    }
+    &::-webkit-scrollbar-thumb {
+    background: $color-primary;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+        background: $color-primary-dark;
+    }
+    .hidden{
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    
 }

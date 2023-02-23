@@ -1,0 +1,37 @@
+@import '../../../style/variables.scss';
+@import '../../../style/mixins.scss';
+.routine__description2{
+    display: flex;
+    background-color: $color-white-1;
+    padding: 0rem 7rem;
+    padding-bottom: 5rem;
+    &__coins{
+        text-align: center;
+        width: 50%;
+        svg{
+            width: 80% - 12%;
+            height: auto;
+        }
+    }
+    &__inspired{
+        text-align: center;
+        width: 50%;
+        svg{
+            width: 80% ;
+            height: auto;
+        }
+    }
+    &__coins--titre{
+        @include description-titre;
+        
+    }
+    &__inspired--titre{
+        @include description-titre;
+    }
+
+    &__inspired--description, &__coins--description{
+        text-align: center;
+        display: inline-block;
+        width: 80%;
+    }
+}

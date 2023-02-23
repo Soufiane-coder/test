@@ -1,0 +1,27 @@
+@import '../../../style/variables.scss';
+@import '../../../style/mixins.scss';
+
+.complate__routine{
+    background-color: $color-white-1;
+    display: flex;
+    padding: 4rem 7rem;
+    justify-content: space-between;
+    align-items: center;
+    &-description{
+        width: 45%;
+        margin-top: -6rem;
+        .description-titre{
+            @include description-titre;
+        }
+        .description-paragraphe{
+            width: 80%;
+            text-align: justify;
+            color: $color-quoter;
+        }
+    }
+
+    &-undraw{
+        width: 50%;
+        
+    }
+}
