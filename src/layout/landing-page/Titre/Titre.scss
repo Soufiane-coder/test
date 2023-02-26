@@ -8,12 +8,13 @@
         width: 35%;
     }
     .introduction-text{
-        padding-left: 2.5rem;
+        padding-top: 5rem * 1.5;
+        padding-left: 2.5rem * 1.5;
         width: 50%;
         font-family: 'Quicksand', sans-serif;
-        font-size: 3rem;
+        font-size: 3rem * 1.5;
         position: relative;
-        padding-right: 2.5rem;
+        padding-right: 2.5rem * 1.5;
         h1{
             position: relative;
             &:hover #gaming-console-clipart{
@@ -23,9 +24,9 @@
             #gaming-console-clipart{
                 z-index: -1;
                 position: absolute;
-                width: 8.5rem;
-                top: 6rem;
-                left: 4.5rem;
+                width: 8.5rem * 1.5;
+                top: 6rem * 1.5;
+                left: 4.5rem * 1.5;
                 transition: all 1s;
             }
             
@@ -33,9 +34,9 @@
             #sheet-clipart{
                 z-index: -1;
                 position: absolute;
-                width: 8.5rem;
-                top: -4.2rem;
-                left: 24.4rem;
+                width: 8.5rem * 1.5;
+                top: -4.2rem * 1.5;
+                left: 24.4rem * 1.5;
             }
         }
         
@@ -43,14 +44,14 @@
             font-family: Imprima , sans-serif;
             text-align: justify;
             color: $color-black-1;
-            font-size: 2.3rem;
-            padding-left: 14rem;
+            font-size: 2.3rem * 1.5;
+            padding-left: 14rem * 1.5;
         }
         .quoter{
             color: $color-quoter;
-            font-size: 1.3rem;
+            font-size: 1.3rem * 1.5;
             text-align: end;
-            margin-bottom: 2rem;
+            margin-bottom: 2rem * 1.5;
         }
     }
 }

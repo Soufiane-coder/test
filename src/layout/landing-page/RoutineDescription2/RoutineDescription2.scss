@@ -3,8 +3,8 @@
 .routine__description2{
     display: flex;
     background-color: $color-white-1;
-    padding: 0rem 7rem;
-    padding-bottom: 5rem;
+    padding: 0rem * 1.5 7rem * 1.5;
+    padding-bottom: 5rem * 1.5;
     &__coins{
         text-align: center;
         width: 50%;
@@ -33,5 +33,6 @@
         text-align: center;
         display: inline-block;
         width: 80%;
+        font-size: 2.5rem;
     }
 }

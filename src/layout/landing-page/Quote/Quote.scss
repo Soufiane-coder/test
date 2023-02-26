@@ -33,18 +33,18 @@
     }
     .container-quote{
         height: $height-section;
-        padding: ($height-section / 2 - 3rem) 7rem;
+        padding: ($height-section / 2 - 3rem * 1.5) 7rem * 1.5;
         .quote{
             text-align: center;
             font-family: DancingScript, sans-serif;
-            font-size: 4rem;
+            font-size: 4rem * 1.5;
         }
         .quoter{
             font-family: Imprima, sans-serif;
             text-align: end;
-            margin-right: 8rem;
-            line-height: 3rem;
-            font-size: 1.4rem;
+            margin-right: 8rem * 1.5;
+            line-height: 3rem * 1.5;
+            font-size: 1.4rem * 1.5;
         }
     }
 }

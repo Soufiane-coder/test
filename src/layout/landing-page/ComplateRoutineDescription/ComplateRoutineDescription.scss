@@ -4,12 +4,12 @@
 .complate__routine{
     background-color: $color-white-1;
     display: flex;
-    padding: 4rem 7rem;
+    padding: 4rem * 1.5 7rem * 1.5;
     justify-content: space-between;
     align-items: center;
     &-description{
         width: 45%;
-        margin-top: -6rem;
+        margin-top: -6rem * 1.5;
         .description-titre{
             @include description-titre;
         }
@@ -17,6 +17,7 @@
             width: 80%;
             text-align: justify;
             color: $color-quoter;
+            font-size: 2.5rem;
         }
     }
 

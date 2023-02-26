@@ -1,13 +1,16 @@
 @import '../../style/variables.scss';
 
+$width-navigation: 15rem;
+$height-navigation: 32rem;
+
 .navigation-bar{
     z-index: 1000;
     position: fixed;
-    right: -5rem;
-    top: 2rem;
-    width: 10rem;
-    height: 20rem;
-    padding: 30px 10px;
+    width: $width-navigation;
+    right: -$width-navigation / 2;
+    top: $width-navigation / 2;
+    height: $height-navigation;
+    padding: 25px 10px;
     background-color: $color-secondary;
     border-radius: 50px;
     display: flex;
@@ -16,7 +19,7 @@
     .icon{
         display: inline-block;
         padding: 5px 0px;
-        width: (20rem - 5rem) / 4;
+        margin-right: auto;
         .cls-1{
             fill: $color-white-1;
         }
