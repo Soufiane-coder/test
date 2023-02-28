@@ -67,3 +67,8 @@ body{
 
     
 }
+::selection{
+    border-radius: 5px;
+    background-color: $color-primary;
+    color: white;
+}

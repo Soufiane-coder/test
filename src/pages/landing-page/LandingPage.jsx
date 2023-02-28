@@ -8,16 +8,19 @@ import RoutineDescription2 from '../../layout/landing-page/RoutineDescription2/R
 import Remember from '../../layout/landing-page/Remember/Remember';
 import Footer from '../../layout/landing-page/Footer/Footer';
 
-const LandingPage = () => (
-    <div className="container">
-        <NavigationBar/>
-        <Header/>
-        <Quote/>
-        <ComplateRoutineDescription/>
-        <RoutineDescription2/>
-        <Remember/>
-        <Footer/>
-    </div>
-)
+const LandingPage = () => {
+    const user = localStorage.getItem('user');
+    return (
+        <div className="container">
+            <NavigationBar user={user} />
+            <Header />
+            <Quote />
+            <ComplateRoutineDescription />
+            <RoutineDescription2 />
+            <Remember />
+            <Footer />
+        </div>
+    )
+}
 
 export default LandingPage;

@@ -45,7 +45,7 @@ class SignUp extends React.Component {
                 res = JSON.parse(res);
                 if (res.status === 'success') {
                     localStorage.setItem('user', JSON.stringify(res.user));
-                    this.history.push('/game%20field');
+                    this.history.push('/gameField');
                 }
             } catch (_) {
                 console.log("cannot sign up", _);

@@ -1,0 +1,66 @@
+@import "../../../style/variables.scss";
+.game__field--header{
+    width: 100%;
+    font-size: 5rem;
+    font-weight: 600;
+    color: $color-black-2;
+    background-color: $color-white-1;
+    .user-informations-bar{
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        .tree-lines{
+            width: 6rem;
+            margin:1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            .line-{
+                &one{
+                    border-radius: 1000px;
+                    height: 20%;
+                    width: 100%;
+                    background: linear-gradient(to right, $color-primary, $color-primary-dark);
+                }
+                &two{
+                    border-radius: 1000px;
+                    height: 20%;
+                    width: 70%;
+                    background: linear-gradient(to right, $color-primary, $color-primary-dark);
+                }
+                &three{
+                    border-radius: 1000px;
+                    height: 20%;
+                    width: 40%;
+                    background: linear-gradient(to right, $color-primary, $color-primary-dark);
+                }
+            }
+        }
+        
+        .username-and-rate{
+            display: flex;
+            .rate{
+                display: flex;
+                height: 100%;
+                padding: .5rem;
+                padding-right: 2rem;
+                border-right: 1px solid $color-white-2;
+                .et{
+                    display: inline-block;
+                    width: 5.7rem;
+                    height: auto;
+                    background-color: $color-white-2;
+                    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+                }
+                .checked{
+                    background-color: $color-secondary;
+                }
+            }
+            .username{
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+    }
+}

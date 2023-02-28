@@ -1,0 +1,18 @@
+@import "../../style/variables.scss";
+
+.navigation-bar-intern{
+    width: 60px;
+    height: 100vh;
+    background-color: $color-primary;
+    padding: 6px;
+    display: flex;
+    .icons{
+        margin-top: auto;
+        margin-bottom: auto;
+        width: 100%;
+        svg{
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+    }
+}
