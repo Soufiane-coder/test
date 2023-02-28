@@ -1,10 +1,12 @@
 import React from 'react';
+import $ from 'jquery';
 
 class SignUp extends React.Component {
-    constructor({ parent }) {
+    constructor({ parent, history }) {
         super();
-        this.parent = parent;
 
+        this.parent = parent;
+        this.history = history;
         this.state = {
             displayName: '',
             email: '',
@@ -13,15 +15,45 @@ class SignUp extends React.Component {
         }
     }
 
-    handleChange = (event) => {
+    _handleChange = (event) => {
         const { name, value } = event.target;
         this.setState({
             [name]: value
         })
     }
 
-    handleSubmit = (event) => {
+    _handleSubmit = async (event) => {
         event.preventDefault();
+        const { displayName, email, password, confirmPassword } = this.state;
+
+        if (password !== confirmPassword) {
+            alert("password are not the same");
+            return;
+        }
+
+        try {
+            let res = await $.ajax({
+                url: "http://localhost/Game%20Of%20Life/logup.php",
+                method: 'post',
+                data: {
+                    username: displayName,
+                    email: email,
+                    password: password,
+                }
+            });
+            try {
+                res = JSON.parse(res);
+                if (res.status === 'success') {
+                    localStorage.setItem('user', JSON.stringify(res.user));
+                    this.history.push('/game%20field');
+                }
+            } catch (_) {
+                console.log("cannot sign up", _);
+            }
+        } catch (err) {
+            console.error(`Error detected login : ${err}`);
+        }
+
         this.setState({
             displayName: '',
             email: '',
@@ -33,25 +65,25 @@ class SignUp extends React.Component {
     render() {
         return (
             <div className={`sign-up__container  ${this.parent.state.isSignIn ? "hidden" : ""}`}>
-                <form className="card" onSubmit={this.handleSubmit}>
+                <form className="card" onSubmit={this._handleSubmit}>
                     <h1 className="sign-up">Sign Up</h1>
                     <div className="inputBox">
-                        <input type="text" name="displayName" value={this.state.displayName} onChange={this.handleChange} required />
+                        <input type="text" name="displayName" value={this.state.displayName} onChange={this._handleChange} required />
                         <span className="user">Username</span>
                     </div>
 
                     <div className="inputBox">
-                        <input type="email" name="email" value={this.state.email} onChange={this.handleChange} required />
+                        <input type="email" name="email" value={this.state.email} onChange={this._handleChange} required />
                         <span className="user">Email</span>
                     </div>
 
                     <div className="inputBox">
-                        <input type="password" name="password" value={this.state.password} onChange={this.handleChange} required />
+                        <input type="password" name="password" value={this.state.password} onChange={this._handleChange} required />
                         <span>Password</span>
                     </div>
 
                     <div className="inputBox">
-                        <input type="password" name="confirmPassword" value={this.state.confirmPassword} onChange={this.handleChange} required />
+                        <input type="password" name="confirmPassword" value={this.state.confirmPassword} onChange={this._handleChange} required />
                         <span>Confirm password</span>
                     </div>
                     <button className="enter">Enter</button>

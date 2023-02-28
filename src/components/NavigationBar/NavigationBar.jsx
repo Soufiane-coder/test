@@ -9,7 +9,7 @@ import { withRouter } from 'react-router-dom';
 const NavigationBar = ({ history }) => (
     <div className="navigation-bar">
         <HomePageIcon className='icon' onClick={() => history.push('/')} />
-        <GamePageIcon className='icon' />
+        <GamePageIcon className='icon' onClick={() => history.push('/game%20field')} />
         <SignInPageIcon className='icon' onClick={() => history.push('/login')} />
         <SignUpPageIcon className='icon' onClick={() => history.push('/login')} />
     </div>

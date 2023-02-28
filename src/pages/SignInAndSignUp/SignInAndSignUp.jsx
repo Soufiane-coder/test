@@ -6,10 +6,15 @@ import { ReactComponent as UndrawMobileImage } from "../../assets/undraw/undraw_
 import ToggleSignInSignUp from "../../components/ToggleSignInSignUp/ToggleSignInSignUp";
 import Flip from 'react-reveal/Flip';
 import './SignInAndSignUp.scss';
+import { withRouter } from 'react-router-dom';
 
 class SignInAndSignUp extends React.Component {
-    constructor() {
+    constructor({ history }) {
         super();
+        if (localStorage.getItem('user')) {
+            history.push('/');
+        }
+        this.history = history;
         this.state = {
             isSignIn: true
         }
@@ -27,9 +32,9 @@ class SignInAndSignUp extends React.Component {
                     <section className="form-section">
                         <ToggleSignInSignUp parent={this} />
 
-                        <SignIn parent={this} />
+                        <SignIn parent={this} history={this.history} />
 
-                        <SignUp parent={this} />
+                        <SignUp parent={this} history={this.history} />
                     </section>
                 </div>
             </>
@@ -38,4 +43,4 @@ class SignInAndSignUp extends React.Component {
 }
 
 
-export default SignInAndSignUp;
+export default withRouter(SignInAndSignUp);
