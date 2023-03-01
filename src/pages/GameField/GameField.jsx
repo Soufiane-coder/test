@@ -3,6 +3,7 @@ import NavigationBarIntern from '../../components/NavigationBarItern/NavigationB
 import Header from '../../layout/GameField/Header/Header';
 import { withRouter } from 'react-router-dom';
 import './GameField.scss';
+import ListRoutine from '../../layout/GameField/ListRoutine/ListRoutine';
 
 class GameField extends React.Component {
     constructor({ history }) {
@@ -17,7 +18,10 @@ class GameField extends React.Component {
             <>
                 <div className="game__field">
                     <NavigationBarIntern />
-                    <Header />
+                    <main>
+                        <Header />
+                        <ListRoutine />
+                    </main>
                 </div>
             </>
         )

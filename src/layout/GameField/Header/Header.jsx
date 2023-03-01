@@ -1,4 +1,5 @@
 import React from "react";
+import { ReactComponent as CoinIcon } from '../../../assets/icons/coin-icon.svg';
 import './Header.scss';
 
 class Header extends React.Component {
@@ -24,6 +25,22 @@ class Header extends React.Component {
                         </div>
                         <div className="username">username</div>
                     </div>
+                </div>
+                <div className="updating-informations">
+                    <p className="notification-routine">Routines <span className="notfication">-1</span></p>
+                    <div className="prices-and-xps">
+                        <div className="xp">1000XP</div>
+                        <div className="coins"><span>10</span> <CoinIcon /></div>
+                    </div>
+                </div>
+                <div className="filter-and-adding-button">
+                    <div className="filter">
+                        <span className="filter-item all">All <span className="tag">45</span></span>
+                        <span className="filter-item important"> Important <span className="tag">45</span></span>
+                        <span className="filter-item waiting"> Waiting <span className="tag">45</span></span>
+                        <span className="filter-item completed"> Completed <span className="tag">45</span></span>
+                    </div>
+                    <button>+ Add Routine</button>
                 </div>
             </div>
         )

@@ -1,4 +1,9 @@
+@import '../../style/variables.scss';
 .game__field{
     display: flex;
-    background-color: blue;
+    background-color: $color-white-1;
+    main{
+        padding: 3rem;
+        width: 100%;
+    }
 }

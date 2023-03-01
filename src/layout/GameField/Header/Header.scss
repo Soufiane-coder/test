@@ -1,18 +1,17 @@
 @import "../../../style/variables.scss";
 .game__field--header{
     width: 100%;
-    font-size: 5rem;
+    font-size: 3rem;
     font-weight: 600;
     color: $color-black-2;
     background-color: $color-white-1;
     .user-informations-bar{
-        padding: 10px;
+        
         display: flex;
         justify-content: space-between;
         width: 100%;
         .tree-lines{
-            width: 6rem;
-            margin:1rem;
+            width: 5rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -48,7 +47,7 @@
                 border-right: 1px solid $color-white-2;
                 .et{
                     display: inline-block;
-                    width: 5.7rem;
+                    width: 3rem;
                     height: auto;
                     background-color: $color-white-2;
                     clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
@@ -59,8 +58,83 @@
             }
             .username{
                 padding-left: 2rem;
-                padding-right: 2rem;
             }
+        }
+    }
+    .updating-informations{
+        padding: 4rem 0rem;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .notification-routine{
+            position: relative;
+            .notfication{
+                position: absolute;
+                top: 0rem;
+                border-radius: 100rem;
+                padding: .3rem .7rem;
+                font-size: 1.7rem;
+                color: $color-white-1;
+                background-color: #ff3a20;
+            }
+        }
+        .prices-and-xps{
+            display: flex;
+            .xp{
+                display: inline-block;
+                margin-right: 2rem;
+                padding: 1rem 3rem;
+                background-color: $color-tertiary;
+                border-radius: 1rem;
+            }
+            .coins{
+                display: flex;
+                padding: 1rem 3rem;
+                background-color: $color-secondary;
+                border-radius: 1rem;
+                svg{
+                    display: inline;
+                    fill: $color-black-2;
+                }
+            }
+        }
+    }
+    .filter-and-adding-button{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1s solid black;
+        .filter{
+            position: relative;
+            .filter-item{
+                cursor: pointer;
+                margin-right: 5rem;
+                border-bottom: 2px solid $color-black-2;
+            }
+            .filter-item:first-child{
+                color: $color-primary;
+                border-bottom: 2px solid $color-primary;
+            }
+            .tag{
+                position: absolute;
+                top: .5rem;
+                font-size: 1.7rem;
+                background-color: $color-white-1;
+                padding: 1px 1rem;
+                box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.742);
+            }
+        }
+        button{
+            cursor: pointer;
+            font-size: 2.5rem;
+            font-family: inherit;
+            font-weight: inherit;
+            padding: 1rem 2rem;
+            border: 0px;
+            border-radius: 1000rem;
+            background-color: $color-tertiary-1;
+            color: $color-white-1;
         }
     }
 }
