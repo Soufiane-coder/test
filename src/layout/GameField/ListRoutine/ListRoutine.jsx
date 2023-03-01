@@ -1,5 +1,5 @@
 import React from "react";
-import Routine from "../../../components/NavigationBarItern/Routine/Routine";
+import Routine from "../../../components/Routine/Routine";
 import './ListRoutine.scss';
 
 class ListRoutine extends React.Component {
@@ -11,6 +11,7 @@ class ListRoutine extends React.Component {
         return (
             <div className="list-routine">
                 <Routine />
+                <Routine /><Routine /><Routine /><Routine /><Routine /><Routine /><Routine /><Routine /><Routine /><Routine /><Routine /><Routine /><Routine />
             </div>
         )
     }
