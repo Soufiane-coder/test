@@ -1,5 +1,5 @@
 import React from 'react';
-import NavigationBarIntern from '../../components/NavigationBarItern/NavigationBarIntern';
+import NavigationBar from '../../components/NavigationBar/NavigationBar';
 import Header from '../../layout/GameField/Header/Header';
 import { withRouter } from 'react-router-dom';
 import './GameField.scss';
@@ -11,16 +11,29 @@ class GameField extends React.Component {
         if (!localStorage.getItem('user')) {
             history.push('/');
         }
+        this.date = new Date();
+        this.fullDate = `${`${this.date.getDate()}`.padStart(2, '0')}/${`${this.date.getMonth() + 1
+            }`.padStart(2, '0')}/${this.date.getFullYear()}`;
+        this.fullDateOld = localStorage.getItem('fullDateOld');
+        this.state = {
+            user: JSON.parse(localStorage.getItem('user'))
+        }
+    }
+
+    setMoney = () => {
+        this.setState({ user: { money: 99, level: 100 } });
+        console.log(this.state.user.money);
     }
 
     render() {
+
         return (
             <>
                 <div className="game__field">
-                    <NavigationBarIntern />
-                    <main>
-                        <Header />
-                        <ListRoutine />
+                    <NavigationBar user={this.state.user} />
+                    <main onClick={this.setMoney}>
+                        <Header user={this.state.user} />
+                        <ListRoutine user={this.state.user} />
                     </main>
                 </div>
             </>

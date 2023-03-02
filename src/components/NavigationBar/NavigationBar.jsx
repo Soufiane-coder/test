@@ -7,25 +7,27 @@ import { ReactComponent as SettingPageIcon } from '../../assets/icons/setting-pa
 import './NavigationBar.scss';
 import { withRouter } from 'react-router-dom';
 
-const NavigationBar = ({ history, user }) => (
-    <div className="navigation-bar">
-        <HomePageIcon className='icon' onClick={() => history.push('/')} />
-        <GamePageIcon className='icon' onClick={() => history.push('/gameField')} />
-        {
-            !user ?
-                <>
-                    <SignInPageIcon className='icon' onClick={() => history.push('/login')} />
-                    <SignUpPageIcon className='icon' onClick={() => history.push('/login')} />
-                </>
-                :
-                <>
-                    <SettingPageIcon className='icon' onClick={() => history.push('/setting')} />
-                    <SignInPageIcon className='icon' onClick={() => {
-                        localStorage.setItem('user', "");
-                        history.push('/');
-                    }} />
-                </>
-        }
-    </div>
-)
+const NavigationBar = ({ history, user }) => {
+    return (
+        <div className="navigation-bar">
+            <HomePageIcon className='icon' onClick={() => history.push('/')} />
+            <GamePageIcon className='icon' onClick={() => history.push('/gameField')} />
+            {
+                !user ?
+                    <>
+                        <SignInPageIcon className='icon' onClick={() => history.push('/login')} />
+                        <SignUpPageIcon className='icon' onClick={() => history.push('/login')} />
+                    </>
+                    :
+                    <>
+                        <SettingPageIcon className='icon' onClick={() => history.push('/setting')} />
+                        <SignInPageIcon className='icon' onClick={() => {
+                            localStorage.setItem('user', "");
+                            history.push('/');
+                        }} />
+                    </>
+            }
+        </div>
+    )
+}
 export default withRouter(NavigationBar);

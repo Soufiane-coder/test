@@ -51,7 +51,7 @@ class SignUp extends React.Component {
                 console.log("cannot sign up", _);
             }
         } catch (err) {
-            console.error(`Error detected login : ${err}`);
+            console.error(`Error detected logup : ${err}`);
         }
 
         this.setState({

@@ -3,8 +3,11 @@ import { ReactComponent as CoinIcon } from '../../../assets/icons/coin-icon.svg'
 import './Header.scss';
 
 class Header extends React.Component {
-    constructor() {
+    constructor({ user }) {
         super();
+        this.state = {
+            user: user
+        }
     }
     render() {
         return (
@@ -23,14 +26,14 @@ class Header extends React.Component {
                             <div className="et"></div>
                             <div className="et"></div>
                         </div>
-                        <div className="username">username</div>
+                        <div className="username">{this.state.user.username}</div>
                     </div>
                 </div>
                 <div className="updating-informations">
                     <p className="notification-routine">Routines <span className="notfication">-1</span></p>
                     <div className="prices-and-xps">
-                        <div className="xp">1000XP</div>
-                        <div className="coins"><span>10</span> <CoinIcon /></div>
+                        <div className="xp">{this.state.user.level}XP</div>
+                        <div className="coins"><span>{this.state.user.money}</span> <CoinIcon /></div>
                     </div>
                 </div>
                 <div className="filter-and-adding-button">
