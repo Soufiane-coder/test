@@ -23,7 +23,8 @@ class Routine extends React.Component {
                 url: "http://localhost/Game%20Of%20Life/addOne.php",
                 method: 'get',
                 data: {
-                    id: id
+                    id: id,
+                    userID: this.state.user.Id_user
                 }
             });
         } catch (err) {
@@ -91,7 +92,7 @@ class Routine extends React.Component {
                 {
                     this.state.combo !== '0' ? <div className="comboed"></div> : ""
                 }
-                <div className="emoji">😶‍🌫️</div>
+                <div className="emoji">{this.state.emoji}</div>
                 <div className="title">{this.state.Titre}</div>
                 <div className="description">{this.state.Description}</div>
                 <div className="extra">
@@ -104,7 +105,7 @@ class Routine extends React.Component {
                         this.state.submitted === '0' ?
                             <button className="btn btn-success done" onClick={this.handleDone}><Done /></button>
                             :
-                            <button className="btn btn-secondary done" onClick={this.handleUndone}><Undone /></button>
+                            <button className="btn btn-secondary done" disabled><Undone /></button>
                     }
 
 

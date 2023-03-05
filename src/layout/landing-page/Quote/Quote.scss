@@ -34,10 +34,15 @@
     .container-quote{
         height: $height-section;
         padding: ($height-section / 2 - 3rem * 1.5) 7rem * 1.5;
+        @media (max-width: 760px) {
+            padding-top: 30rem;
+
+        }
         .quote{
             text-align: center;
             font-family: DancingScript, sans-serif;
             font-size: 4rem * 1.5;
+            
         }
         .quoter{
             font-family: Imprima, sans-serif;

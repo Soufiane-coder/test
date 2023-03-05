@@ -18,11 +18,12 @@ class GameField extends React.Component {
         this.state = {
             user: JSON.parse(localStorage.getItem('user'))
         }
+        this.setMoney.bind(this);
     }
 
     setMoney = () => {
-        this.setState({ user: { money: 99, level: 100 } });
-        console.log(this.state.user.money);
+        this.state.user = { user: { money: "99", level: "100" } };
+        console.log(this.state);
     }
 
     render() {
@@ -31,9 +32,9 @@ class GameField extends React.Component {
             <>
                 <div className="game__field">
                     <NavigationBar user={this.state.user} />
-                    <main onClick={this.setMoney}>
-                        <Header user={this.state.user} />
-                        <ListRoutine user={this.state.user} />
+                    <main >
+                        <Header user={this.state.user} setMoney={this.setMoney} />
+                        <ListRoutine user={this.state.user} fullDate={this.fullDate} fullDateOld={this.fullDateOld} />
                     </main>
                 </div>
             </>

@@ -23,7 +23,7 @@ const Titre = () => (
                     <span className="color-green"> future</span> is
                     <span className="color-blue"> hidden</span> in your daily
                     <span className="color-red"> routine.</span>
-                    <p className="quoter">― Mike Murdock</p>
+                    <span className="quoter">― Mike Murdock</span>
                 </p>
             </Fade>
             <GameFieldButton />

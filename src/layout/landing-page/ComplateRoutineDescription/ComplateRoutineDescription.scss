@@ -7,9 +7,17 @@
     padding: 4rem * 1.5 7rem * 1.5;
     justify-content: space-between;
     align-items: center;
+    @media (max-width: 760px) {
+        flex-direction: column;
+    }
     &-description{
         width: 45%;
         margin-top: -6rem * 1.5;
+        @media (max-width: 760px) {
+            margin-top: 0px;
+            width: 100%;
+            padding-right: 0px;
+        }
         .description-titre{
             @include description-titre;
         }
@@ -18,11 +26,17 @@
             text-align: justify;
             color: $color-quoter;
             font-size: 2.5rem;
+            @media (max-width: 760px) {
+                width: 90%;
+            }
         }
     }
 
     &-undraw{
         width: 50%;
-        
+        @media (max-width: 760px) {
+            height: 360px;
+            width: 100%;
+        }
     }
 }

@@ -9,17 +9,21 @@ const RoutineDescription2 = () => (
 
         <div className="routine__description2__coins">
             <CoinUndraw />
-            <Fade>
-                <p className='routine__description2__coins--titre'>Earn coins</p>
-                <p className="routine__description2__coins--description">You can input your daily tasks and earn coins for completing them. You can also skip a task using coins, which can be earned from completed routines.</p>
-            </Fade>
+            <div>
+                <Fade>
+                    <p className='routine__description2__coins--titre'>Earn coins</p>
+                    <p className="routine__description2__coins--description">You can input your daily tasks and earn coins for completing them. You can also skip a task using coins, which can be earned from completed routines.</p>
+                </Fade>
+            </div>
         </div>
         <div className="routine__description2__inspired">
             <InspiredUndraw />
-            <Fade >
-                <p className='routine__description2__inspired--titre'>Video Games inspired</p>
-                <p className="routine__description2__inspired--description ">Inspired by video games, our approach is designed to keep you motivated to complete your daily routines.</p>
-            </Fade>
+            <div style={{ width: "100%" }}>
+                <Fade >
+                    <p className='routine__description2__inspired--titre'>Video Games inspired</p>
+                    <p className="routine__description2__inspired--description ">Inspired by video games, our approach is designed to keep you motivated to complete your daily routines.</p>
+                </Fade>
+            </div>
         </div>
     </div>
 )
