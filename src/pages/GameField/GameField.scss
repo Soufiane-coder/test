@@ -5,6 +5,9 @@
     main{
         padding: 3rem;
         margin-right: 60px;
+        @media (max-width: 768px){
+            margin-right: 0px;
+        }
         width: 100%;
     }
 }

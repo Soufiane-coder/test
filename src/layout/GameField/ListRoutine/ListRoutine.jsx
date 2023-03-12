@@ -51,6 +51,8 @@ const ListRoutine = ({ user, fullDate, fullDateOld }) => {
                         url: "http://localhost/Game%20Of%20Life/listRoutine.php",
                         method: "get"
                     });
+                    allRoutines = JSON.parse(allRoutines).reverse();
+                    setRoutines({ routines: allRoutines });
                 } catch (err) {
                     console.log(
                         `Error cannot connect with the data base to list all routines`
