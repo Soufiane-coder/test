@@ -16,9 +16,10 @@ const ListRoutine = ({ user, fullDate, fullDateOld }) => {
                     url: "http://localhost/Game%20Of%20Life/listRoutine.php",
                     method: "get",
                     data: {
-                        Id_user: user.Id_user
+                        userId: user.userId
                     }
                 });
+
                 allRoutines = JSON.parse(res).reverse();
                 if (fullDate === fullDateOld) {
                     setRoutines({ routines: allRoutines });
@@ -36,7 +37,7 @@ const ListRoutine = ({ user, fullDate, fullDateOld }) => {
                             url: "http://localhost/Game%20Of%20Life/ableButtons.php",
                             method: "get",
                             data: {
-                                id: routine.Id_task,
+                                id: routine.userId,
                             }
                         });
                         localStorage.setItem('fullDateOld', fullDate);
@@ -69,8 +70,8 @@ const ListRoutine = ({ user, fullDate, fullDateOld }) => {
             {
                 routines ? routines.routines.map(routine => {
                     return (
-                        <Fade key={routine.Id_task} bottom>
-                            <Routine className='routine' key={routine.Id_task} {...routine} user={user} />
+                        <Fade key={routine.taskId} bottom>
+                            <Routine className='routine' key={routine.taskId} {...routine} user={user} />
                         </Fade>
                     )
                 }

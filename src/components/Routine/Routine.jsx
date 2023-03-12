@@ -24,7 +24,7 @@ class Routine extends React.Component {
                 method: 'get',
                 data: {
                     id: id,
-                    userID: this.state.user.Id_user
+                    userID: this.state.user.userId
                 }
             });
         } catch (err) {
@@ -78,7 +78,7 @@ class Routine extends React.Component {
     }
     render() {
         return (
-            <div className="routine" id={this.state.Id_task} style={
+            <div className="routine" id={this.state.taskId} style={
                 this.state.submitted === "1" ? {
                     transform: "translateY(1.5rem)",
                     boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.262)",
@@ -93,8 +93,8 @@ class Routine extends React.Component {
                     this.state.combo !== '0' ? <div className="comboed"></div> : ""
                 }
                 <div className="emoji">{this.state.emoji}</div>
-                <div className="title">{this.state.Titre}</div>
-                <div className="description">{this.state.Description}</div>
+                <div className="title">{this.state.title}</div>
+                <div className="description">{this.state.description}</div>
                 <div className="extra">
                     <div className="combo">{this.state.combo === '0' ? "" : `⚡${this.state.combo}`}</div>
                     <div className="skip-num">{this.state.skip === '0' ? "" : `↪️${this.state.skip}`}</div>
