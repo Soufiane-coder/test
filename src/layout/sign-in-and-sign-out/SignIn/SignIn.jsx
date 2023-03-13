@@ -1,14 +1,13 @@
 import React from 'react';
 import $ from 'jquery';
 import './SignIn.scss';
-
+import { setCurrentUser } from '../../../redux/user/user.actions';
+import { connect } from 'react-redux';
 class SignIn extends React.Component {
 
-    constructor({ parent, history }) {
-        super();
+    constructor(props) {
+        super(props);
 
-        this.parent = parent;
-        this.history = history;
         this.state = {
             email: '',
             password: ''
@@ -35,40 +34,17 @@ class SignIn extends React.Component {
             });
             res = JSON.parse(res);
             if (res.status === 'success') {
-                localStorage.setItem('user', JSON.stringify(res.user));
-                this.history.push('/gameField');
+                this.props.setCurrentUser(res.user);
             }
         } catch (err) {
             console.error(`Error detected login : ${err}`);
         }
 
-        // try {
-        //     fetch('http://localhost/Game%20Of%20Life/login.php', options)
-        //         .then((res) => {
-        //             if (!res.ok) {
-        //                 throw new Error('not found');
-        //             }
-        //             return res.json();
-        //         })
-        //         .then((res) => {
-        //             console.log(res);
-        //             if (res.account) { // if the account exist go to the game field
-        //                 // this.history.push('/game%20field');
-        //             }
-
-        //         });
-        //     this.setState({
-        //         email: '',
-        //         password: ''
-        //     })
-        // } catch (err) {
-        //     console.log(err.message);
-        // }
     }
 
     render() {
-        return (
-            <div className={`sign-in__container  ${!this.parent.state.isSignIn ? "hidden" : ""}`} >
+        return (//!this.props.isHidden
+            <div className={`sign-in__container  ${this.props.hidden ? "hidden" : ""}`} >
 
                 <form className="card" onSubmit={this._handleSubmit}>
                     <h1 className="sign-in">Sign In</h1>
@@ -92,4 +68,8 @@ class SignIn extends React.Component {
     }
 }
 
-export default SignIn;
+const mapDispatchToProps = (dispatch) => ({
+    setCurrentUser: (user) => dispatch(setCurrentUser(user))
+})
+
+export default connect(null, mapDispatchToProps)(SignIn);

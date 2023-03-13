@@ -4,38 +4,38 @@ import Header from '../../layout/GameField/Header/Header';
 import { withRouter } from 'react-router-dom';
 import './GameField.scss';
 import ListRoutine from '../../layout/GameField/ListRoutine/ListRoutine';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { selectCurrentUser } from '../../redux/user/user.selector';
 
 class GameField extends React.Component {
-    constructor({ history }) {
-        super();
-        if (!localStorage.getItem('user')) {
-            history.push('/');
+    constructor(props) {
+        super(props);
+        if (!props.user) {
+            this.props.history.push('/');
         }
         this.date = new Date();
         this.fullDate = `${`${this.date.getDate()}`.padStart(2, '0')}/${`${this.date.getMonth() + 1
             }`.padStart(2, '0')}/${this.date.getFullYear()}`;
         this.fullDateOld = localStorage.getItem('fullDateOld');
-        this.state = {
-            user: JSON.parse(localStorage.getItem('user'))
-        }
     }
 
 
     render() {
-
         return (
             <>
                 <div className="game__field">
-                    <NavigationBar user={this.state.user} />
+                    <NavigationBar />
                     <main >
                         <Header />
-                        <ListRoutine user={this.state.user} fullDate={this.fullDate} fullDateOld={this.fullDateOld} />
+                        <ListRoutine fullDate={this.fullDate} fullDateOld={this.fullDateOld} />
                     </main>
                 </div>
             </>
         )
     }
-
 }
-
-export default withRouter(GameField);
+const mapStateToProps = createStructuredSelector({
+    user: selectCurrentUser
+})
+export default withRouter(connect(mapStateToProps)(GameField));

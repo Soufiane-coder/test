@@ -1,12 +1,11 @@
 import React from 'react';
 import $ from 'jquery';
+import { connect } from 'react-redux';
+import { setCurrentUser } from '../../../redux/user/user.actions';
 
 class SignUp extends React.Component {
-    constructor({ parent, history }) {
-        super();
-
-        this.parent = parent;
-        this.history = history;
+    constructor(props) {
+        super(props);
         this.state = {
             displayName: '',
             email: '',
@@ -44,8 +43,7 @@ class SignUp extends React.Component {
             try {
                 res = JSON.parse(res);
                 if (res.status === 'success') {
-                    localStorage.setItem('user', JSON.stringify(res.user));
-                    this.history.push('/gameField');
+                    this.props.setCurrentUser(res.user);
                 }
             } catch (_) {
                 console.log("cannot sign up", _);
@@ -64,7 +62,7 @@ class SignUp extends React.Component {
 
     render() {
         return (
-            <div className={`sign-up__container  ${this.parent.state.isSignIn ? "hidden" : ""}`}>
+            <div className={`sign-up__container  ${this.props.hidden ? "hidden" : ""}`}>
                 <form className="card" onSubmit={this._handleSubmit}>
                     <h1 className="sign-up">Sign Up</h1>
                     <div className="inputBox">
@@ -94,5 +92,8 @@ class SignUp extends React.Component {
     }
 }
 
+const mapDispatchToProps = (dispatch) => ({
+    setCurrentUser: (user) => dispatch(setCurrentUser(user))
+})
 
-export default SignUp;
+export default connect(null, mapDispatchToProps)(SignUp);

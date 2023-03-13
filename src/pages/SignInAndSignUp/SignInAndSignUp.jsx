@@ -16,7 +16,7 @@ class SignInAndSignUp extends React.Component {
         }
         this.history = history;
         this.state = {
-            isSignIn: true
+            hidden: true
         }
     }
     render() {
@@ -32,9 +32,9 @@ class SignInAndSignUp extends React.Component {
                     <section className="form-section">
                         <ToggleSignInSignUp parent={this} />
 
-                        <SignIn parent={this} history={this.history} />
+                        <SignIn hidden={!this.state.hidden} history={this.history} />
 
-                        <SignUp parent={this} history={this.history} />
+                        <SignUp hidden={this.state.hidden} history={this.history} />
                     </section>
                 </div>
             </>

@@ -5,6 +5,9 @@ import Routine from "../../../components/Routine/Routine";
 import $ from 'jquery';
 import { Fade } from 'react-reveal';
 import './ListRoutine.scss';
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import { setCurrentUser } from "../../../redux/user/user.actions";
 const ListRoutine = ({ user, fullDate, fullDateOld }) => {
 
     const [routines, setRoutines] = useState(null);
@@ -80,4 +83,9 @@ const ListRoutine = ({ user, fullDate, fullDateOld }) => {
         </div>
     )
 }
-export default ListRoutine;
+
+const mapStateToProps = createStructuredSelector({
+    user: setCurrentUser
+})
+
+export default connect(mapStateToProps)(ListRoutine);

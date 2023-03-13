@@ -6,8 +6,12 @@ import { ReactComponent as SignUpPageIcon } from '../../assets/icons/sign-up-pag
 import { ReactComponent as SettingPageIcon } from '../../assets/icons/setting-page.svg';
 import './NavigationBar.scss';
 import { withRouter } from 'react-router-dom';
+import { selectCurrentUser } from '../../redux/user/user.selector';
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { setCurrentUser } from '../../redux/user/user.actions';
+const NavigationBar = ({ history, user, setCurrentUser }) => {
 
-const NavigationBar = ({ history, user }) => {
     return (
         <>
             <div className="navigation-bar">
@@ -23,7 +27,7 @@ const NavigationBar = ({ history, user }) => {
                         <>
                             <SettingPageIcon className='icon' onClick={() => history.push('/setting')} />
                             <SignInPageIcon className='icon' onClick={() => {
-                                localStorage.setItem('user', "");
+                                setCurrentUser("")
                                 history.push('/');
                             }} />
                         </>
@@ -50,4 +54,12 @@ const NavigationBar = ({ history, user }) => {
         </>
     )
 }
-export default withRouter(NavigationBar);
+
+const mapStateToProps = createStructuredSelector({
+    user: selectCurrentUser
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    setCurrentUser: (user) => dispatch(setCurrentUser(user)),
+});
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NavigationBar));
