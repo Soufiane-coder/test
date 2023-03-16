@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
 import Routine from "../../../components/Routine/Routine";
 import $ from 'jquery';
@@ -8,9 +8,9 @@ import './ListRoutine.scss';
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 import { setCurrentUser } from "../../../redux/user/user.actions";
-const ListRoutine = ({ user, fullDate, fullDateOld }) => {
+import { loadCurrentRoutines, setCurrentRoutines } from '../../../redux/routines/routines.actions';
 
-    const [routines, setRoutines] = useState(null);
+const ListRoutine = ({ user, fullDate, fullDateOld, routinesCollection, setCurrentRoutines }) => {
     useEffect(() => {
         async function getRoutines() {
             let allRoutines;
@@ -25,7 +25,7 @@ const ListRoutine = ({ user, fullDate, fullDateOld }) => {
 
                 allRoutines = JSON.parse(res).reverse();
                 if (fullDate === fullDateOld) {
-                    setRoutines({ routines: allRoutines });
+                    setCurrentRoutines(allRoutines);
                 }
             } catch (err) {
                 console.error(
@@ -40,7 +40,7 @@ const ListRoutine = ({ user, fullDate, fullDateOld }) => {
                             url: "http://localhost/Game%20Of%20Life/ableButtons.php",
                             method: "get",
                             data: {
-                                id: routine.userId,
+                                id: routine.taskId,
                             }
                         });
                         localStorage.setItem('fullDateOld', fullDate);
@@ -56,7 +56,7 @@ const ListRoutine = ({ user, fullDate, fullDateOld }) => {
                         method: "get"
                     });
                     allRoutines = JSON.parse(allRoutines).reverse();
-                    setRoutines({ routines: allRoutines });
+                    setCurrentRoutines(allRoutines);
                 } catch (err) {
                     console.log(
                         `Error cannot connect with the data base to list all routines`
@@ -71,7 +71,7 @@ const ListRoutine = ({ user, fullDate, fullDateOld }) => {
     return (
         <div className="list-routine">
             {
-                routines ? routines.routines.map(routine => {
+                routinesCollection.payload.routines ? routinesCollection.payload.routines.map(routine => {
                     return (
                         <Fade key={routine.taskId} bottom>
                             <Routine className='routine' key={routine.taskId} {...routine} user={user} />
@@ -85,7 +85,12 @@ const ListRoutine = ({ user, fullDate, fullDateOld }) => {
 }
 
 const mapStateToProps = createStructuredSelector({
-    user: setCurrentUser
+    user: setCurrentUser,
+    routinesCollection: loadCurrentRoutines,
 })
 
-export default connect(mapStateToProps)(ListRoutine);
+const mapDispatchToProps = (dispatch) => ({
+    setCurrentRoutines: (routines) => dispatch(setCurrentRoutines(routines)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListRoutine);

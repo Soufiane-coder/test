@@ -43,7 +43,7 @@ class SignIn extends React.Component {
     }
 
     render() {
-        return (//!this.props.isHidden
+        return (
             <div className={`sign-in__container  ${this.props.hidden ? "hidden" : ""}`} >
 
                 <form className="card" onSubmit={this._handleSubmit}>
