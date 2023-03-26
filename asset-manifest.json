@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Soufiane-coder/test/static/css/main.073c9b0a.css",
+    "main.js": "/Soufiane-coder/test/static/js/main.59e02b4c.js",
+    "static/js/787.d54456cf.chunk.js": "/Soufiane-coder/test/static/js/787.d54456cf.chunk.js",
+    "static/media/logo.svg": "/Soufiane-coder/test/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/Soufiane-coder/test/index.html",
+    "main.073c9b0a.css.map": "/Soufiane-coder/test/static/css/main.073c9b0a.css.map",
+    "main.59e02b4c.js.map": "/Soufiane-coder/test/static/js/main.59e02b4c.js.map",
+    "787.d54456cf.chunk.js.map": "/Soufiane-coder/test/static/js/787.d54456cf.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.59e02b4c.js"
+  ]
+}
