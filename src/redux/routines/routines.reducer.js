@@ -1,4 +1,5 @@
 import { RoutinesActionTypes } from "./routines.types";
+import { checkRoutine } from "./routines.utils";
 
 const INITIAL_STATE = {
   routines: null,
@@ -12,15 +13,10 @@ const routinesReducer = (state = INITIAL_STATE, action) => {
         ...state,
         routines: action.payload,
       };
-    case RoutinesActionTypes.LOAD_CURRENT_ROUTINES:
+    case RoutinesActionTypes.CHECK_ROUTINE:
       return {
         ...state,
-        routines: action.payload,
-      };
-    case RoutinesActionTypes.GET_ALL_NOTIFICATIONS:
-      return {
-        ...state,
-        notifications: action,
+        routines: checkRoutine(state.routines, action.payload),
       };
     default:
       return state;

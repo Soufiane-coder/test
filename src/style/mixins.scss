@@ -6,3 +6,11 @@
     font-weight: 600;
 }
 
+@mixin clear-input-styles{
+    background-color: transparent;
+                border: none;
+                &:focus{
+                    border: none;
+                    outline: none;
+                }
+}
