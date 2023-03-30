@@ -8,8 +8,12 @@ import './PopupWindowRoutine.scss';
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
 
+import data from '@emoji-mart/data'
+import Picker from '@emoji-mart/react'
 const PopupWindowRoutine = ({ user, addRoutine, setPopup }) => {
-    const [addRoutineForm, setAddRoutineForm] = useState({ title: "", description: "", important: false, level: 1 });
+    const [emoji, setEmoji] = useState("");
+    const [showEmojiList, setShowEmojiList] = useState(false);
+    const [addRoutineForm, setAddRoutineForm] = useState({ title: "", description: "", important: false, level: 1, emoji: "" });
     const handleChange = (event) => {
         const { name, value } = event.target;
         if (event.target.type === "checkbox") {
@@ -20,7 +24,7 @@ const PopupWindowRoutine = ({ user, addRoutine, setPopup }) => {
     }
     const handleSubmit = async (event) => {
         event.preventDefault();
-        if (!addRoutineForm.title && !addRoutineForm.description) {
+        if (!addRoutineForm.title && !addRoutineForm.description && !addRoutineForm.emoji) {
             alert("insert all fields");
             return;
         }
@@ -34,6 +38,7 @@ const PopupWindowRoutine = ({ user, addRoutine, setPopup }) => {
                     description: addRoutineForm.description,
                     level: addRoutineForm.level,
                     priority: addRoutineForm.important ? "important" : "low",
+                    emoji: emoji,
                     notification: "00:00"
                 }
             });
@@ -44,13 +49,24 @@ const PopupWindowRoutine = ({ user, addRoutine, setPopup }) => {
         }
         setPopup(false)
     }
+    const handleEmoji = (emoji) => {
+        setEmoji(emoji.native);
+        setShowEmojiList(false);
+    }
+
+
+
     return (
-        <div className="popup">
+        <div className="popup" onClick={(event) => { if (event.target.closest(".choose-emoji") || event.target.closest("em-emoji-picker")) return; setShowEmojiList(false) }}>
+            {
+                showEmojiList ? <Picker className="emoji-list" data={data} onEmojiSelect={handleEmoji} /> : ""
+            }
             < div className="popup__window" >
                 <Close className="popup__window--close" onClick={() => setPopup(false)} />
 
                 <div style={{ height: "80%" }}>
                     <div className="popup__window--title">
+                        <span className="emoji" style={{ fontSize: "5rem" }}>{emoji}</span>
                         <input placeholder="Title" type="text" onChange={handleChange} name="title" id="title" required />
                     </div>
                     <div className="popup__window--description">
@@ -68,6 +84,7 @@ const PopupWindowRoutine = ({ user, addRoutine, setPopup }) => {
                             <label htmlFor="important">Important</label>
                         </label>
                     </div>
+                    <button className="choose-emoji" onClick={() => setShowEmojiList(true)}>choose emoji</button>
                     <div className="popup__window--add-button">
                         <input type="submit" onClick={handleSubmit} value="Add routine" />
                     </div>

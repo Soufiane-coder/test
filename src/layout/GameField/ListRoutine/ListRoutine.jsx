@@ -11,6 +11,7 @@ import { selectCurrentUser } from "../../../redux/user/user.selector";
 import { setCurrentRoutines } from '../../../redux/routines/routines.actions';
 import { selectCurrentRoutines } from '../../../redux/routines/routines.selector';
 
+
 const ListRoutine = ({ user, fullDate, fullDateOld, routinesCollection, setCurrentRoutines }) => {
     useEffect(() => {
         async function getRoutines() {
@@ -40,7 +41,6 @@ const ListRoutine = ({ user, fullDate, fullDateOld, routinesCollection, setCurre
 
                 allRoutines = JSON.parse(res).reverse();
                 if (fullDate === fullDateOld) {
-                    console.log(allRoutines);
                     setCurrentRoutines(allRoutines);
                 }
             } catch (err) {
@@ -52,17 +52,18 @@ const ListRoutine = ({ user, fullDate, fullDateOld, routinesCollection, setCurre
         }
         getRoutines();
     }, []);
+
     return (
         <div className="list-routine">
             {
-                routinesCollection ? routinesCollection.map(routine => {
+                routinesCollection && routinesCollection.length ? routinesCollection.map(routine => {
                     return (
                         <Fade key={routine.taskId} bottom>
                             <Routine className='routine' key={routine.taskId} routine={routine} user={user} />
                         </Fade>
                     )
                 }
-                ) : ""
+                ) : <h1 style={{ margin: "auto", fontSize: "5rem", color: "#525252" }}> You have no routine yet add routine</h1>
             }
         </div>
     )

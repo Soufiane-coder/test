@@ -21,13 +21,13 @@ const routinesReducer = (state = INITIAL_STATE, action) => {
       state.routines.unshift(action.payload);
       return {
         ...state,
-        routines: state.routines,
+        routines: [...state.routines],
       };
     }
     case RoutinesActionTypes.REMOVE_ROUTINE: {
       return {
         ...state,
-        routines: removeRoutine(state.routines, action.payload),
+        routines: [...removeRoutine(state.routines, action.payload)],
       };
     }
     default:

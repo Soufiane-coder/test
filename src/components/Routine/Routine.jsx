@@ -49,6 +49,7 @@ const Routine = ({ user, routine, checkRoutine, removeRoutine }) => {
     }
 
     const handleRemove = async (event) => {
+        if (!window.confirm("Do realy want to remove this item")) return;
         const id = event.target.closest('.routine').id;
         try {
             await $.ajax({
