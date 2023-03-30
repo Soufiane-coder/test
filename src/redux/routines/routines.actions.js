@@ -19,3 +19,8 @@ export const addRoutine = (routine) => ({
   type: RoutinesActionTypes.ADD_ROUTINE,
   payload: routine,
 });
+
+export const skipRoutine = (taskId) => ({
+  type: RoutinesActionTypes.SKIP_ROUTINE,
+  payload: taskId,
+});

@@ -18,3 +18,12 @@ export const removeRoutine = (routines, taskId) => {
   }
   return routines;
 };
+
+export const skipRoutine = (routines, taskId) => {
+  return routines.map((routine) => {
+    if (routine.taskId === taskId) {
+      routine.skip = +routine.skip + 1;
+    }
+    return routine;
+  });
+};

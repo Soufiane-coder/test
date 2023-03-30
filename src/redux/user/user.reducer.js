@@ -16,6 +16,12 @@ const userReducer = (state = INITIAL_STATE, action) => {
         ...state,
         currentUser: addCoinToUser(action.payload),
       };
+    case UserActionTypes.BUY_SKIP:
+      state.currentUser.coin = +state.currentUser.coin - 10;
+      return {
+        ...state,
+        currentUser: { ...state.currentUser },
+      };
     default:
       return state;
   }

@@ -1,5 +1,5 @@
 import { RoutinesActionTypes } from "./routines.types";
-import { checkRoutine, removeRoutine } from "./routines.utils";
+import { checkRoutine, removeRoutine, skipRoutine } from "./routines.utils";
 
 const INITIAL_STATE = {
   routines: [],
@@ -28,6 +28,12 @@ const routinesReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         routines: [...removeRoutine(state.routines, action.payload)],
+      };
+    }
+    case RoutinesActionTypes.SKIP_ROUTINE: {
+      return {
+        ...state,
+        routines: skipRoutine(state.routines, action.payload),
       };
     }
     default:

@@ -8,9 +8,10 @@ import './Routine.scss';
 import { connect } from "react-redux";
 import { selectCurrentRoutines } from "../../redux/routines/routines.selector";
 import { createStructuredSelector } from "reselect";
-import { checkRoutine, removeRoutine } from "../../redux/routines/routines.actions";
+import { checkRoutine, removeRoutine, skipRoutine } from "../../redux/routines/routines.actions";
+import { buySkip } from '../../redux/user/user.actions';
 
-const Routine = ({ user, routine, checkRoutine, removeRoutine }) => {
+const Routine = ({ user, routine, checkRoutine, removeRoutine, skipRoutine, buySkip }) => {
     const handleDone = async (event) => {
         const id = event.target.closest('.routine').id;
         try {
@@ -30,20 +31,24 @@ const Routine = ({ user, routine, checkRoutine, removeRoutine }) => {
     }
 
     const handleSkip = async (event) => {
-        // const id = event.target.closest('.routine').id;
-        // let res;
-        // try {
-        //     res = await $.ajax({
-        //         url: 'http://localhost/Game%20Of%20Life/skipTaskDay.php',
-        //         method: "get",
-        //         data: {
-        //             id: id
-        //         }
-        //     });
-        // } catch (err) {
-        //     console.log(`Error cannot send skip sign to the data base`);
-        //     return;
-        // }
+        const id = event.target.closest('.routine').id;
+
+        let res;
+        try {
+            res = await $.ajax({
+                url: 'http://localhost/Game%20Of%20Life/skipTaskDay.php',
+                method: "get",
+                data: {
+                    id: id,
+                    userId: user.userId
+                }
+            });
+            skipRoutine(id);
+            buySkip();
+        } catch (err) {
+            console.log(`Error cannot send skip sign to the data base`);
+            return;
+        }
         // res = JSON.parse(res);
         // this.setState({ skip: +this.state.skip + 1 });
     }
@@ -104,7 +109,7 @@ const Routine = ({ user, routine, checkRoutine, removeRoutine }) => {
                 }
 
 
-                <button className="btn btn-info skip" disabled={user.money < 10} onClick={handleSkip}><Skip /></button>
+                <button className="btn btn-info skip" disabled={user.coin < 10} onClick={handleSkip}><Skip /></button>
                 <button className="btn btn-danger remove  " onClick={handleRemove}><Remove /></button>
             </div>
         </div>
@@ -118,7 +123,9 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = (dispatch) => ({
     checkRoutine: (taskId) => dispatch(checkRoutine(taskId)),
-    removeRoutine: (taskId) => dispatch(removeRoutine(taskId))
+    removeRoutine: (taskId) => dispatch(removeRoutine(taskId)),
+    skipRoutine: (taskId) => dispatch(skipRoutine(taskId)),
+    buySkip: () => dispatch(buySkip())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Routine);
