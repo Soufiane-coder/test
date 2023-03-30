@@ -7,7 +7,7 @@ import { selectCurrentUser } from "../../../redux/user/user.selector";
 import { addCoin } from '../../../redux/user/user.actions';
 import { selectCurrentRoutines } from '../../../redux/routines/routines.selector';
 import { useState } from "react";
-import { ReactComponent as Close } from '../../../assets/icons/close.svg';
+import PopupWindowRoutine from "../../../components/PopupWindowRoutine/PopupWindowRoutine";
 
 const Header = ({ addCoin, user, routines }) => {
     // return (<><button onClick={() => addCoin(user)}>add coins </button> <p>{user?.money}</p></>)
@@ -19,37 +19,7 @@ const Header = ({ addCoin, user, routines }) => {
 
     return (
         <div className="game__field--header">
-            {
-                popup ? <div className="popup">
-                    <div className="popup__window">
-                        <Close className="popup__window--close" onClick={() => setPopup(false)} />
-
-                        <div style={{ height: "80%" }}>
-                            <div className="popup__window--title">
-                                <input placeholder="Title" type="text" name="title" id="title" required />
-                            </div>
-                            <div className="popup__window--description">
-                                <textarea name="description" placeholder="Description" id="description"></textarea>
-                            </div>
-                        </div>
-                        <div style={{ height: "20%", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                            <div className="popup__window--level">
-                                <input type="number" placeholder="level" name="level" id="level" min="1" max="5" />
-                            </div>
-                            <div className="popup__window--important">
-                                <label className="container">
-                                    <input type="checkbox" id="important" />
-                                    <div className="checkmark"></div>
-                                    <label htmlFor="important">Important</label>
-                                </label>
-                            </div>
-                            <div className="popup__window--add-button">
-                                <input type="submit" value="Add routine" />
-                            </div>
-                        </div>
-                    </div>
-                </div > : null
-            }
+            {popup ? <PopupWindowRoutine setPopup={setPopup} /> : null}
             <div className="user-informations-bar">
                 <div className="tree-lines">
                     <div className="line-one" />

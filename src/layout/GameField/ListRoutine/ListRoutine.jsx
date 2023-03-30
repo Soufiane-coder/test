@@ -7,22 +7,26 @@ import { Fade } from 'react-reveal';
 import './ListRoutine.scss';
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import { setCurrentUser } from "../../../redux/user/user.actions";
-import { loadCurrentRoutines, setCurrentRoutines } from '../../../redux/routines/routines.actions';
+import { selectCurrentUser } from "../../../redux/user/user.selector";
+import { setCurrentRoutines } from '../../../redux/routines/routines.actions';
 import { selectCurrentRoutines } from '../../../redux/routines/routines.selector';
 
 const ListRoutine = ({ user, fullDate, fullDateOld, routinesCollection, setCurrentRoutines }) => {
     useEffect(() => {
         async function getRoutines() {
             if (fullDate !== fullDateOld) {
-                await $.ajax({
-                    url: "http://localhost/Game%20Of%20Life/ableButtons.php",
-                    method: "get",
-                    data: {
-                        id: user.userId,
-                    }
-                });
-                localStorage.setItem('fullDateOld', fullDate);
+                try {
+                    await $.ajax({
+                        url: "http://localhost/Game%20Of%20Life/ableButtons.php",
+                        method: "get",
+                        data: {
+                            id: user.userId,
+                        }
+                    });
+                    localStorage.setItem('fullDateOld', fullDate);
+                } catch (err) {
+                    console.error(err);
+                }
             }
             let allRoutines;
             try {
@@ -36,6 +40,7 @@ const ListRoutine = ({ user, fullDate, fullDateOld, routinesCollection, setCurre
 
                 allRoutines = JSON.parse(res).reverse();
                 if (fullDate === fullDateOld) {
+                    console.log(allRoutines);
                     setCurrentRoutines(allRoutines);
                 }
             } catch (err) {
@@ -64,7 +69,7 @@ const ListRoutine = ({ user, fullDate, fullDateOld, routinesCollection, setCurre
 }
 
 const mapStateToProps = createStructuredSelector({
-    user: setCurrentUser,
+    user: selectCurrentUser,
     routinesCollection: selectCurrentRoutines,
 })
 

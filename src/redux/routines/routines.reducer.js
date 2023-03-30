@@ -1,9 +1,8 @@
 import { RoutinesActionTypes } from "./routines.types";
-import { checkRoutine } from "./routines.utils";
+import { checkRoutine, removeRoutine } from "./routines.utils";
 
 const INITIAL_STATE = {
-  routines: null,
-  notifications: 0,
+  routines: [],
 };
 
 const routinesReducer = (state = INITIAL_STATE, action) => {
@@ -18,6 +17,19 @@ const routinesReducer = (state = INITIAL_STATE, action) => {
         ...state,
         routines: checkRoutine(state.routines, action.payload),
       };
+    case RoutinesActionTypes.ADD_ROUTINE: {
+      state.routines.unshift(action.payload);
+      return {
+        ...state,
+        routines: state.routines,
+      };
+    }
+    case RoutinesActionTypes.REMOVE_ROUTINE: {
+      return {
+        ...state,
+        routines: removeRoutine(state.routines, action.payload),
+      };
+    }
     default:
       return state;
   }

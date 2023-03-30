@@ -7,3 +7,14 @@ export const checkRoutine = (routines, taskId) => {
     return routine;
   });
 };
+
+export const removeRoutine = (routines, taskId) => {
+  const index = routines.indexOf(
+    routines.find((routine) => routine.taskId === taskId)
+  );
+  if (index > -1) {
+    // only splice array when item is found
+    routines.splice(index, 1); // 2nd parameter means remove one item only
+  }
+  return routines;
+};

@@ -7,32 +7,26 @@ import { ReactComponent as Undone } from '../../assets/icons/undone.svg';
 import './Routine.scss';
 import { connect } from "react-redux";
 import { selectCurrentRoutines } from "../../redux/routines/routines.selector";
-import { setCurrentUser } from "../../redux/user/user.actions";
 import { createStructuredSelector } from "reselect";
-import { checkRoutine } from "../../redux/routines/routines.actions";
+import { checkRoutine, removeRoutine } from "../../redux/routines/routines.actions";
 
-const Routine = ({ user, routine, checkRoutine }) => {
-
+const Routine = ({ user, routine, checkRoutine, removeRoutine }) => {
     const handleDone = async (event) => {
         const id = event.target.closest('.routine').id;
-        checkRoutine(id);
-        let combo;
-        // try {
-        //     combo = await $.ajax({
-        //         url: "http://localhost/Game%20Of%20Life/addOne.php",
-        //         method: 'get',
-        //         data: {
-        //             id: id,
-        //             userID: user.userId
-        //         }
-        //     });
-        // } catch (err) {
-        //     console.error(`Error cannot checked this routine`);
-        //     return;
-        // }
-
-        // this.setState({ money: +this.state.user.money + 1 });
-        // this.setState({ submitted: '1', combo: +this.state.combo + 1 });
+        try {
+            await $.ajax({
+                url: "http://localhost/Game%20Of%20Life/addOne.php",
+                method: 'get',
+                data: {
+                    id: id,
+                    userID: user.userId
+                }
+            });
+            checkRoutine(id);
+        } catch (err) {
+            console.error(`Error cannot checked this routine`);
+            return;
+        }
     }
 
     const handleSkip = async (event) => {
@@ -54,19 +48,21 @@ const Routine = ({ user, routine, checkRoutine }) => {
         // this.setState({ skip: +this.state.skip + 1 });
     }
 
-    const handleRemove = async (event) => { // under test
-        //     const id = e.currentTarget.closest('.item').id;
-        //   // console.log(id);
-        //   let combo;
-        //   try {
-        //     const res = await this._ajaxRequest('deleteRoutine.php', 'get', {
-        //       id: id,
-        //     });
-        //     // console.log(res);
-        //   } catch (err) {
-        //     console.error(`Error cannot delet this routine`);
-        //     return;
-        //   }
+    const handleRemove = async (event) => {
+        const id = event.target.closest('.routine').id;
+        try {
+            await $.ajax({
+                url: "http://localhost/Game%20Of%20Life/deleteRoutine.php",
+                method: 'get',
+                data: {
+                    id: id,
+                }
+            });
+            removeRoutine(id);
+        } catch (err) {
+            console.error(`Error cannot checked this routine ${err}`);
+            return;
+        }
     }
 
     const handleUndone = async (event) => {
@@ -114,13 +110,14 @@ const Routine = ({ user, routine, checkRoutine }) => {
     )
 
 }
+
 const mapStateToProps = createStructuredSelector({
-    user: setCurrentUser,
     routinesCollection: selectCurrentRoutines,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    checkRoutine: (taskId) => dispatch(checkRoutine(taskId))
+    checkRoutine: (taskId) => dispatch(checkRoutine(taskId)),
+    removeRoutine: (taskId) => dispatch(removeRoutine(taskId))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Routine);
