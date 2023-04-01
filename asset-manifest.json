@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/test/static/css/main.5c7cbe99.css",
+    "main.css": "/test/static/css/main.7f6efeab.css",
     "main.js": "/test/static/js/main.06353a23.js",
     "static/media/DancingScript-VariableFont_wght.ttf": "/test/static/media/DancingScript-VariableFont_wght.3e7e73f4e34e4945f363.ttf",
     "static/media/Quicksand-VariableFont_wght.ttf": "/test/static/media/Quicksand-VariableFont_wght.cf52df73d8529b4815ed.ttf",
@@ -25,11 +25,11 @@
     "static/media/done.svg": "/test/static/media/done.0db08473db08dbcd0e33778c3a13af23.svg",
     "static/media/close.svg": "/test/static/media/close.c76ad28c33323dfe86ec1e4bcf9c5b6c.svg",
     "static/media/skip.svg": "/test/static/media/skip.fbb88ebe2a28461c6481dd96245a2340.svg",
-    "main.5c7cbe99.css.map": "/test/static/css/main.5c7cbe99.css.map",
+    "main.7f6efeab.css.map": "/test/static/css/main.7f6efeab.css.map",
     "main.06353a23.js.map": "/test/static/js/main.06353a23.js.map"
   },
   "entrypoints": [
-    "static/css/main.5c7cbe99.css",
+    "static/css/main.7f6efeab.css",
     "static/js/main.06353a23.js"
   ]
 }
