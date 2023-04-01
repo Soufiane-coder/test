@@ -1,16 +1,35 @@
 {
   "files": {
-    "main.css": "/test/static/css/main.073c9b0a.css",
-    "main.js": "/test/static/js/main.64896e4c.js",
-    "static/js/787.d54456cf.chunk.js": "/test/static/js/787.d54456cf.chunk.js",
-    "static/media/logo.svg": "/test/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/test/index.html",
-    "main.073c9b0a.css.map": "/test/static/css/main.073c9b0a.css.map",
-    "main.64896e4c.js.map": "/test/static/js/main.64896e4c.js.map",
-    "787.d54456cf.chunk.js.map": "/test/static/js/787.d54456cf.chunk.js.map"
+    "main.css": "/game_of_life/static/css/main.aa510418.css",
+    "main.js": "/game_of_life/static/js/main.4c98d34d.js",
+    "static/media/DancingScript-VariableFont_wght.ttf": "/game_of_life/static/media/DancingScript-VariableFont_wght.3e7e73f4e34e4945f363.ttf",
+    "static/media/Quicksand-VariableFont_wght.ttf": "/game_of_life/static/media/Quicksand-VariableFont_wght.cf52df73d8529b4815ed.ttf",
+    "static/media/undraw_gaming_re_cma2.svg": "/game_of_life/static/media/undraw_gaming_re_cma2.43d2e12062ce7b0f584396ddeb06bade.svg",
+    "static/media/Imprima-Regular.ttf": "/game_of_life/static/media/Imprima-Regular.2de5274164cb77a2dcd6.ttf",
+    "static/media/undraw_video_game_night_8h8m.svg": "/game_of_life/static/media/undraw_video_game_night_8h8m.8ee7535d4c98eb1b95aaf75f59c43c21.svg",
+    "static/media/undraw_savings_re_eq4w.svg": "/game_of_life/static/media/undraw_savings_re_eq4w.53a95c2202c424c3b38ba1cf496c7e95.svg",
+    "static/media/undraw_done_checking_re_6vyx.svg": "/game_of_life/static/media/undraw_done_checking_re_6vyx.8cd6fe16241e1d9f827d2454d52ba805.svg",
+    "static/media/undraw_indoor_bike_pwa4.svg": "/game_of_life/static/media/undraw_indoor_bike_pwa4.a76e7b8befa31256eea1b9342cd2f375.svg",
+    "static/media/gaming-console-clipart.svg": "/game_of_life/static/media/gaming-console-clipart.d04622c1121f814c5ab7e98305ed6777.svg",
+    "static/media/undraw_access_account_re_8spm.svg": "/game_of_life/static/media/undraw_access_account_re_8spm.5dc0f120291163e73f86b4c3909e10c3.svg",
+    "static/media/setting-page.svg": "/game_of_life/static/media/setting-page.104a3f4d40f19b999c742b08e6660462.svg",
+    "static/media/gamepage.svg": "/game_of_life/static/media/gamepage.184c8e90ab6c59e1212f295d60ba6211.svg",
+    "static/media/sign-in-page.svg": "/game_of_life/static/media/sign-in-page.751ce0c8ac16322430b974be442f5756.svg",
+    "static/media/sheet.svg": "/game_of_life/static/media/sheet.5f6deab9a9e7e2d59ab87c616819b7b6.svg",
+    "static/media/sign-up-page.svg": "/game_of_life/static/media/sign-up-page.bacd9fc711dc7d31589fbb65d8ed3fd9.svg",
+    "static/media/homepage.svg": "/game_of_life/static/media/homepage.e8a83df5c9f7cda0afd5e5a76373de6a.svg",
+    "static/media/coin-icon.svg": "/game_of_life/static/media/coin-icon.45797b274b0609f285fae588bd3a441f.svg",
+    "index.html": "/game_of_life/index.html",
+    "static/media/remove.svg": "/game_of_life/static/media/remove.f1f3319782c354a221d5a2c19e36ed29.svg",
+    "static/media/undone.svg": "/game_of_life/static/media/undone.c69dfb39e6a781cd09143af4502b89f7.svg",
+    "static/media/done.svg": "/game_of_life/static/media/done.0db08473db08dbcd0e33778c3a13af23.svg",
+    "static/media/close.svg": "/game_of_life/static/media/close.c76ad28c33323dfe86ec1e4bcf9c5b6c.svg",
+    "static/media/skip.svg": "/game_of_life/static/media/skip.fbb88ebe2a28461c6481dd96245a2340.svg",
+    "main.aa510418.css.map": "/game_of_life/static/css/main.aa510418.css.map",
+    "main.4c98d34d.js.map": "/game_of_life/static/js/main.4c98d34d.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.64896e4c.js"
+    "static/css/main.aa510418.css",
+    "static/js/main.4c98d34d.js"
   ]
 }
