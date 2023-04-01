@@ -9,6 +9,18 @@
 // @media (max-width: 562px) {
 //     font-size: 35%;
 // }
+
+@keyframes zoom {
+    0% {
+        width: 100rem;
+        height: 0rem;
+    }
+
+    100% {
+        width: 100rem;
+        height: 50rem;
+    }
+}
 .popup {
     position: fixed;
     top: 0;
@@ -39,6 +51,7 @@
         border-radius: 20px;
         position: relative;
         margin: 5rem;
+        transition: 1s all;
         @media (max-width: 562px) {
             height: 90vh;
             width: 50rem;

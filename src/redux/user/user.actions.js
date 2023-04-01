@@ -5,9 +5,9 @@ export const setCurrentUser = (user) => ({
   payload: user,
 });
 
-export const addCoin = (user) => ({
+export const addCoin = () => ({
   type: UserActionTypes.ADD_COIN,
-  payload: user,
+  payload: null,
 });
 
 export const buySkip = () => ({

@@ -62,7 +62,9 @@ const PopupWindowRoutine = ({ user, addRoutine, setPopup }) => {
                 showEmojiList ? <Picker className="emoji-list" data={data} onEmojiSelect={handleEmoji} /> : ""
             }
             < div className="popup__window" >
-                <Close className="popup__window--close" onClick={() => setPopup(false)} />
+                <Close className="popup__window--close" onClick={(event) => {
+                    setPopup(false);
+                }} />
 
                 <div style={{ height: "80%" }}>
                     <div className="popup__window--title">

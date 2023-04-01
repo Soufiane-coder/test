@@ -14,7 +14,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case UserActionTypes.ADD_COIN:
       return {
         ...state,
-        currentUser: addCoinToUser(action.payload),
+        currentUser: addCoinToUser(state.currentUser),
       };
     case UserActionTypes.BUY_SKIP:
       state.currentUser.coin = +state.currentUser.coin - 10;

@@ -9,9 +9,9 @@ import { connect } from "react-redux";
 import { selectCurrentRoutines } from "../../redux/routines/routines.selector";
 import { createStructuredSelector } from "reselect";
 import { checkRoutine, removeRoutine, skipRoutine } from "../../redux/routines/routines.actions";
-import { buySkip } from '../../redux/user/user.actions';
+import { buySkip, addCoin } from '../../redux/user/user.actions';
 
-const Routine = ({ user, routine, checkRoutine, removeRoutine, skipRoutine, buySkip }) => {
+const Routine = ({ user, routine, checkRoutine, removeRoutine, skipRoutine, buySkip, addCoin }) => {
     const handleDone = async (event) => {
         const id = event.target.closest('.routine').id;
         try {
@@ -24,6 +24,7 @@ const Routine = ({ user, routine, checkRoutine, removeRoutine, skipRoutine, buyS
                 }
             });
             checkRoutine(id);
+            addCoin();
         } catch (err) {
             console.error(`Error cannot checked this routine`);
             return;
@@ -125,7 +126,8 @@ const mapDispatchToProps = (dispatch) => ({
     checkRoutine: (taskId) => dispatch(checkRoutine(taskId)),
     removeRoutine: (taskId) => dispatch(removeRoutine(taskId)),
     skipRoutine: (taskId) => dispatch(skipRoutine(taskId)),
-    buySkip: () => dispatch(buySkip())
+    buySkip: () => dispatch(buySkip()),
+    addCoin: () => dispatch(addCoin())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Routine);

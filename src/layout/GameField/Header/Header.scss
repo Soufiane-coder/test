@@ -1,17 +1,7 @@
 @import "../../../style/variables.scss";
 @import "../../../style/mixins.scss";
 
-@keyframes zoom {
-    0% {
-        width: 100rem;
-        height: 0rem;
-    }
 
-    100% {
-        width: 100rem;
-        height: 50rem;
-    }
-}
 
 .game__field--header {
     width: 100%;
