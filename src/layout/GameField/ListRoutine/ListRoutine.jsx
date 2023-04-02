@@ -10,7 +10,7 @@ import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "../../../redux/user/user.selector";
 import { setCurrentRoutines } from '../../../redux/routines/routines.actions';
 import { selectCurrentRoutines } from '../../../redux/routines/routines.selector';
-
+import myServer from "../../../components/server/server";
 
 const ListRoutine = ({ user, fullDate, fullDateOld, routinesCollection, setCurrentRoutines }) => {
     useEffect(() => {
@@ -18,7 +18,7 @@ const ListRoutine = ({ user, fullDate, fullDateOld, routinesCollection, setCurre
             if (fullDate !== fullDateOld) {
                 try {
                     await $.ajax({
-                        url: "http://localhost/Game%20Of%20Life/ableButtons.php",
+                        url: `${myServer}/ableButtons.php`,
                         method: "get",
                         data: {
                             id: user.userId,
@@ -32,7 +32,7 @@ const ListRoutine = ({ user, fullDate, fullDateOld, routinesCollection, setCurre
             let allRoutines;
             try {
                 const res = await $.ajax({
-                    url: "http://localhost/Game%20Of%20Life/listRoutine.php",
+                    url: `${myServer}/listRoutine.php`,
                     method: "get",
                     data: {
                         userId: user.userId

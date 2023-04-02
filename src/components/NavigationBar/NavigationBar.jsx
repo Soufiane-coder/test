@@ -44,10 +44,19 @@ const NavigationBar = ({ history, user, setCurrentUser }) => {
 
                 <nav className="navigation__nav">
                     <ul className="navigation__list">
-                        <li className="navigation__item"><a href="/" className="navigation__link"> Home GOL </a></li>
-                        <li className="navigation__item"><a href="/gameField" className="navigation__link">game field</a></li>
-                        <li className="navigation__item"><a href="/login" className="navigation__link">sign in</a></li>
-                        <li className="navigation__item"><a href="/login" className="navigation__link">sign up</a></li>
+                        <li className="navigation__item"><div onClick={() => history.push('/')} className="navigation__link"> Home GOL </div></li>
+                        <li className="navigation__item"><div className="navigation__link" onClick={() => history.push('/gameField')} >game field</div></li>
+                        {
+                            !user ?
+                                <>
+                                    <li className="navigation__item"><div className="navigation__link" onClick={() => history.push('/login')} >sign in</div></li>
+                                    <li className="navigation__item"><div className="navigation__link" onClick={() => history.push('/login')} >sign up</div></li></> :
+                                <li className="navigation__item"><div className="navigation__link" onClick={() => {
+                                    setCurrentUser("")
+                                    history.push('/')
+                                }} >sign out</div></li>
+                        }
+
                     </ul>
                 </nav>
             </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import $ from 'jquery';
 import { connect } from 'react-redux';
 import { setCurrentUser } from '../../../redux/user/user.actions';
-
+import myServer from '../../../components/server/server';
 class SignUp extends React.Component {
     constructor(props) {
         super(props);
@@ -32,7 +32,7 @@ class SignUp extends React.Component {
 
         try {
             let res = await $.ajax({
-                url: "http://localhost/Game%20Of%20Life/logup.php",
+                url: `${myServer}/logup.php`,
                 method: 'post',
                 data: {
                     username: displayName,

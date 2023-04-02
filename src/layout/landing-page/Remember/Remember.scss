@@ -1,6 +1,7 @@
 @import '../../../style/variables.scss';
 @import '../../../style/mixins.scss';
 .remember__section{
+    overflow: hidden;
     padding: 0rem 7rem;
     background-color: $color-white-1;
     @media (max-width:760px) {

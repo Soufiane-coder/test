@@ -7,6 +7,7 @@ import { selectCurrentUser } from '../../redux/user/user.selector';
 import './PopupWindowRoutine.scss';
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
+import  myServer  from "../server/server";
 
 import data from '@emoji-mart/data'
 import Picker from '@emoji-mart/react'
@@ -30,7 +31,7 @@ const PopupWindowRoutine = ({ user, addRoutine, setPopup }) => {
         }
         try {
             let res = await $.ajax({
-                url: "http://localhost/Game%20Of%20Life/addRoutine.php",
+                url: `${myServer}/addRoutine.php`,
                 method: 'get',
                 data: {
                     userId: user.userId,

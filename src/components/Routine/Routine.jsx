@@ -10,13 +10,14 @@ import { selectCurrentRoutines } from "../../redux/routines/routines.selector";
 import { createStructuredSelector } from "reselect";
 import { checkRoutine, removeRoutine, skipRoutine } from "../../redux/routines/routines.actions";
 import { buySkip, addCoin } from '../../redux/user/user.actions';
+import myServer from "../server/server";
 
 const Routine = ({ user, routine, checkRoutine, removeRoutine, skipRoutine, buySkip, addCoin }) => {
     const handleDone = async (event) => {
         const id = event.target.closest('.routine').id;
         try {
             await $.ajax({
-                url: "http://localhost/Game%20Of%20Life/addOne.php",
+                url: `${myServer}/addOne.php`,
                 method: 'get',
                 data: {
                     id: id,
@@ -37,7 +38,7 @@ const Routine = ({ user, routine, checkRoutine, removeRoutine, skipRoutine, buyS
         let res;
         try {
             res = await $.ajax({
-                url: 'http://localhost/Game%20Of%20Life/skipTaskDay.php',
+                url: `${myServer}/skipTaskDay.php`,
                 method: "get",
                 data: {
                     id: id,
@@ -59,7 +60,7 @@ const Routine = ({ user, routine, checkRoutine, removeRoutine, skipRoutine, buyS
         const id = event.target.closest('.routine').id;
         try {
             await $.ajax({
-                url: "http://localhost/Game%20Of%20Life/deleteRoutine.php",
+                url: `${myServer}/deleteRoutine.php`,
                 method: 'get',
                 data: {
                     id: id,

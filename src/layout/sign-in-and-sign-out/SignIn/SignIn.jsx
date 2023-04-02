@@ -3,6 +3,7 @@ import $ from 'jquery';
 import './SignIn.scss';
 import { setCurrentUser } from '../../../redux/user/user.actions';
 import { connect } from 'react-redux';
+import myServer from '../../../components/server/server';
 class SignIn extends React.Component {
 
     constructor(props) {
@@ -25,7 +26,7 @@ class SignIn extends React.Component {
 
         try {
             let res = await $.ajax({
-                url: "http://localhost/Game%20Of%20Life/login.php",
+                url: `${myServer}/login.php`,
                 method: 'post',
                 data: {
                     email: email,
