@@ -2,7 +2,7 @@ import { RoutinesActionTypes } from "./routines.types";
 import { checkRoutine, removeRoutine, skipRoutine } from "./routines.utils";
 
 const INITIAL_STATE = {
-  routines: [],
+  routines: null,
 };
 
 const routinesReducer = (state = INITIAL_STATE, action) => {

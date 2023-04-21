@@ -7,7 +7,7 @@ import { selectCurrentUser } from '../../redux/user/user.selector';
 import './PopupWindowRoutine.scss';
 import { connect } from "react-redux";
 import { createStructuredSelector } from "reselect";
-import  myServer  from "../server/server";
+import myServer from "../server/server";
 
 import data from '@emoji-mart/data'
 import Picker from '@emoji-mart/react'
@@ -43,12 +43,13 @@ const PopupWindowRoutine = ({ user, addRoutine, setPopup }) => {
                     notification: "00:00"
                 }
             });
+            setPopup(false);
             res = JSON.parse(res);
             addRoutine(res);
         } catch (err) {
             console.error(`Error detected login : ${err}`);
         }
-        setPopup(false)
+
     }
     const handleEmoji = (emoji) => {
         setEmoji(emoji.native);
