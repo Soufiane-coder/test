@@ -8,11 +8,13 @@ import './Routine.scss';
 import { connect } from "react-redux";
 import { selectCurrentRoutines } from "../../redux/routines/routines.selector";
 import { createStructuredSelector } from "reselect";
+import { selectCurrentUser } from "../../redux/user/user.selector";
 import { checkRoutine, removeRoutine, skipRoutine } from "../../redux/routines/routines.actions";
 import { buySkip, addCoin } from '../../redux/user/user.actions';
 import myServer from "../server/server";
 
 const Routine = ({ user, routine, checkRoutine, removeRoutine, skipRoutine, buySkip, addCoin }) => {
+
     const handleDone = async (event) => {
         const id = event.target.closest('.routine').id;
         try {
@@ -34,10 +36,9 @@ const Routine = ({ user, routine, checkRoutine, removeRoutine, skipRoutine, buyS
 
     const handleSkip = async (event) => {
         const id = event.target.closest('.routine').id;
-
-        let res;
         try {
-            res = await $.ajax({
+            // const res = 
+            await $.ajax({
                 url: `${myServer}/skipTaskDay.php`,
                 method: "get",
                 data: {
@@ -51,8 +52,7 @@ const Routine = ({ user, routine, checkRoutine, removeRoutine, skipRoutine, buyS
             console.log(`Error cannot send skip sign to the data base`);
             return;
         }
-        // res = JSON.parse(res);
-        // this.setState({ skip: +this.state.skip + 1 });
+
     }
 
     const handleRemove = async (event) => {
@@ -73,12 +73,12 @@ const Routine = ({ user, routine, checkRoutine, removeRoutine, skipRoutine, buyS
         }
     }
 
-    const handleUndone = async (event) => {
-        // this.setState({
-        //     submitted: "0",
-        //     combo: `${+this.state.combo - 1}`,
-        // });
-    }
+    // const handleUndone = async (event) => {
+    //     // this.setState({
+    //     //     submitted: "0",
+    //     //     combo: `${+this.state.combo - 1}`,
+    //     // });
+    // }
     return (
         <div className="routine" id={routine.taskId} style={
             routine.submitted === "1" ? {
@@ -121,6 +121,7 @@ const Routine = ({ user, routine, checkRoutine, removeRoutine, skipRoutine, buyS
 
 const mapStateToProps = createStructuredSelector({
     routinesCollection: selectCurrentRoutines,
+    user: selectCurrentUser
 })
 
 const mapDispatchToProps = (dispatch) => ({

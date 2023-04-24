@@ -1,41 +1,59 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import NavigationBar from '../../components/NavigationBar/NavigationBar';
 import Header from '../../layout/GameField/Header/Header';
-import { withRouter } from 'react-router-dom';
 import './GameField.scss';
 import ListRoutine from '../../layout/GameField/ListRoutine/ListRoutine';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from '../../redux/user/user.selector';
+import { setCurrentRoutines } from '../../redux/routines/routines.actions';
+import myServer from "../../components/server/server";
+import $ from 'jquery';
 
-class GameField extends React.Component {
-    constructor(props) {
-        super(props);
-        if (!props.user) {
-            this.props.history.push('/');
+const GameField = ({ setCurrentRoutines, user }) => {
+    useEffect(() => {
+        const getFetchRoutines = async () => {
+            let res;
+            try {
+                res = await $.ajax({
+                    url: `${myServer}/listRoutine.php`,
+                    method: "post",
+                    data: {
+                        userId: user.userId
+                    }
+                });
+                const allRoutines = JSON.parse(res).reverse();
+                setCurrentRoutines(allRoutines);
+
+            } catch (err) {
+                console.error(
+                    `Error cannot connect with the data base to list all routines ${err}`
+                );
+                console.error(res);
+                return;
+            }
         }
-        this.date = new Date();
-        this.fullDate = `${`${this.date.getDate()}`.padStart(2, '0')}/${`${this.date.getMonth() + 1
-            }`.padStart(2, '0')}/${this.date.getFullYear()}`;
-        this.fullDateOld = localStorage.getItem('fullDateOld');
-    }
+        getFetchRoutines();
+    }, []);
 
 
-    render() {
-        return (
-            <>
-                <div className="game__field">
-                    <NavigationBar />
-                    <main >
-                        <Header />
-                        <ListRoutine fullDate={this.fullDate} fullDateOld={this.fullDateOld} />
-                    </main>
-                </div>
-            </>
-        )
-    }
+
+    return (
+        <div className="game__field">
+            <NavigationBar />
+            <main >
+                <Header />
+                <ListRoutine />
+            </main>
+        </div>
+    )
 }
+
 const mapStateToProps = createStructuredSelector({
     user: selectCurrentUser
 })
-export default withRouter(connect(mapStateToProps)(GameField));
+
+const mapDispatchToProps = (dispatch) => ({
+    setCurrentRoutines: (routines) => dispatch(setCurrentRoutines(routines)),
+})
+export default connect(mapStateToProps, mapDispatchToProps)(GameField);

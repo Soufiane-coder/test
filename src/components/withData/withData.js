@@ -1,51 +1,13 @@
 import React from 'react';
-import $ from 'jquery';
-import myServer from "../server/server";
+import { connect } from 'react-redux';
+import { createStructuredSelector } from 'reselect';
+import { selectCurrentRoutines } from '../../redux/routines/routines.selector';
+
 import LoadingRoutine from '../LoadingRoutine/LoadingRoutine';
-import { useEffect } from 'react';
 const withData = WrappedComponent => {
-    const ComponentData = (props) => {
-        const {fullDate, fullDateOld, user, routinesCollection, setCurrentRoutines} = props;
-        useEffect (() => {
-            async function getRoutines() {
-                if (fullDate !== fullDateOld) {
-                    try {
-                        await $.ajax({
-                            url: `${myServer}/ableButtons.php`,
-                            method: "get",
-                            data: {
-                                id: user.userId,
-                            }
-                        });
-                        localStorage.setItem('fullDateOld', fullDate);
-                    } catch (err) {
-                        console.error(err);
-                    }
-                }
-                let allRoutines;
-                try {
-                    const res = await $.ajax({
-                        url: `${myServer}/listRoutine.php`,
-                        method: "get",
-                        data: {
-                            userId: user.userId
-                        }
-                    });
-                    allRoutines = JSON.parse(res).reverse();
-                    if (fullDate === fullDateOld) {
-                        setCurrentRoutines(allRoutines);
-                    }
-                } catch (err) {
-                    console.error(
-                        `Error cannot connect with the data base to list all routines${err}`
-                    );
-                    return;
-                }
-            }
-            getRoutines.call(this);
-        }, []);
-        return routinesCollection ? <WrappedComponent  {...props} />
-        : <div className='list-routine'>
+    const ComponentData = ({routinesCollection, ...otherProps}) => {
+        if(routinesCollection === null){
+            return <div className='list-routine'>
             <LoadingRoutine/>
             <LoadingRoutine/>
             <LoadingRoutine/>
@@ -54,8 +16,18 @@ const withData = WrappedComponent => {
             <LoadingRoutine/>
             <LoadingRoutine/>
             </div>
+        }else if (routinesCollection === undefined){
+            return "undefined"
+        }
+        else if(routinesCollection.legth === 0){
+            return <h1 style={{ margin: "auto", fontSize: "5rem", color: "#525252" }}> You have no routine yet add routine</h1>
+        }
+        else return <WrappedComponent routinesCollection={routinesCollection} {...otherProps} />
     }
-  return ComponentData;
+    const mapStateToProps = createStructuredSelector({
+        routinesCollection: selectCurrentRoutines
+    })
+  return connect(mapStateToProps)(ComponentData);
 };
 
 export default withData;
