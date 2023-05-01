@@ -34,7 +34,7 @@ const GameField = ({ setCurrentRoutines, user }) => {
             }
         }
         getFetchRoutines();
-    }, []);
+    }, [setCurrentRoutines, user]);
 
 
 

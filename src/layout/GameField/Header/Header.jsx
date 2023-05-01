@@ -28,11 +28,11 @@ const Header = ({ addCoin, user, routines }) => {
                 </div>
                 <div className="username-and-rate">
                     <div className="rate">
-                        <div className="et checked"></div>
-                        <div className="et"></div>
-                        <div className="et"></div>
-                        <div className="et"></div>
-                        <div className="et"></div>
+                        <div className="et checked">★</div>
+                        <div className="et">★</div>
+                        <div className="et">★</div>
+                        <div className="et">★</div>
+                        <div className="et">★</div>
                     </div>
                     <div className="username">{user?.username}</div>
                 </div>
@@ -41,15 +41,23 @@ const Header = ({ addCoin, user, routines }) => {
                 <p className="notification-routine">Routines <span className="notfication">{routines?.reduce((accum, routine) => routine.submitted === "0" ? ++accum : accum, 0)}</span></p>
                 <div className="prices-and-xps">
                     <div className="xp">{user?.xp}XP</div>
-                    <div className="coins"><span>{user?.coin}</span> <CoinIcon /></div>
+                    <div className="coins">{user?.coin}<CoinIcon /></div>
                 </div>
             </div>
             <div className="filter-and-adding-button">
                 <div className="filter">
-                    <span className="filter-item all">All <span className="tag">45</span></span>
-                    <span className="filter-item important"> Important <span className="tag">45</span></span>
-                    <span className="filter-item waiting"> Waiting <span className="tag">45</span></span>
-                    <span className="filter-item completed"> Completed <span className="tag">45</span></span>
+                    <input type="radio" name="filter" id="all" />
+                    <label className="filter-item all" htmlFor="all">All <span className="tag">0</span></label>
+
+                    <input type="radio" name="filter" id="important" />
+                    <label className="filter-item important" htmlFor="important"> Important <span className="tag">0</span></label>
+
+                    <input type="radio" name="filter" id="waiting" />
+                    <label className="filter-item waiting" htmlFor="waiting"> Waiting <span className="tag">0</span></label>
+
+                    <input type="radio" name="filter" id="completed" />
+                    <label className="filter-item completed" htmlFor="completed"> Completed <span className="tag">0</span></label>
+                    <span className="selector"></span>
                 </div>
                 <button onClick={() => setPopup(true)}>+ Add Routine</button>
             </div>
