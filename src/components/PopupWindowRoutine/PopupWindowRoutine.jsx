@@ -11,6 +11,7 @@ import myServer from "../server/server";
 
 import data from '@emoji-mart/data'
 import Picker from '@emoji-mart/react'
+
 const PopupWindowRoutine = ({ user, addRoutine, setPopup }) => {
     const [emoji, setEmoji] = useState("");
     const [showEmojiList, setShowEmojiList] = useState(false);

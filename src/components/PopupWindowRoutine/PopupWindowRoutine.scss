@@ -21,6 +21,7 @@
         height: 50rem;
     }
 }
+
 .popup {
     position: fixed;
     top: 0;
@@ -44,19 +45,18 @@
         display: flex;
         flex-direction: column;
         padding: 3rem;
-        animation: zoom .2s;
+        animation: zoom .5s;
         width: 100rem;
         height: 50rem;
         background-color: $color-white-2;
         border-radius: 20px;
         position: relative;
         margin: 5rem;
-        transition: 1s all;
+
         @media (max-width: 562px) {
             height: 90vh;
             width: 50rem;
         }
-
   
         &--close {
             margin: 8px;
@@ -219,7 +219,5 @@
                     background-color: $color-primary-dark;
                 }
         }
-
-
     }
 }
