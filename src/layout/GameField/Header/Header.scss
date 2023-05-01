@@ -72,15 +72,13 @@
     }
 
     .updating-informations {
-        padding: 1rem 0rem;
+        padding: 2rem 0rem;
         width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
-
         .notification-routine {
             position: relative;
-
             .notfication {
                 position: absolute;
                 top: 0rem;
@@ -94,12 +92,16 @@
 
         .prices-and-xps {
             display: flex;
+            @media (max-width: 768px) {
+                margin-right: 15rem;
+            }
             .xp {
                 display: inline;
                 margin-right: 2rem;
                 padding: 1rem 3rem;
                 background-color: $color-tertiary;
                 border-radius: 1rem;
+                
             }
 
             .coins {
@@ -165,7 +167,7 @@
             }
 
             .selector{
-                z-index: 100000;
+                z-index: 10;
                 position: absolute;
                 left: -1px;
                 bottom: -.5px;

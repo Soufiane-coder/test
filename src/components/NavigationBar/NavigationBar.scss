@@ -49,24 +49,24 @@ $height-navigation: 32rem;
     
         &__button {
             background-color: $color-white-1;
-            height: 7rem * 1.5;
-            width: 7rem * 1.5;
+            height: 8rem ;
+            width: 8rem;
             position: fixed;
-            top: 6rem ;
+            top: 8rem ;
             right: 6rem ;
             border-radius: 50%;
-            z-index: 2000;
-            box-shadow: 0 1rem * 1.5 3rem * 1.5 rgba($color-black-1, .1);
+            z-index: 5000;
+            box-shadow: 0 1rem * 1.5 3rem * 1.5 rgba($color-black-1, .2);
             text-align: center;
             cursor: pointer;
         }
     
         &__background {
-            height: 6rem * 1.5;
-            width: 6rem * 1.5;
+            height: 6rem;
+            width: 6rem;
             border-radius: 50%;
             position: fixed;
-            top: 6.5rem ;
+            top: 9rem ;
             right: 6.5rem ;
             background-image: radial-gradient($color-primary, $color-primary-dark);
             z-index: 1000;
@@ -154,7 +154,7 @@ $height-navigation: 32rem;
         //ICON
         &__icon {
             position: relative;
-            margin-top: 3.5rem * 1.5;
+            margin-top: 4.2rem;
     
             &,
             &::before,
