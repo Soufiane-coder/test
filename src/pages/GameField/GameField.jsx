@@ -8,9 +8,11 @@ import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from '../../redux/user/user.selector';
 import { setCurrentRoutines } from '../../redux/routines/routines.actions';
 import myServer from "../../components/server/server";
+import { selectCurrentDisplayMode } from '../../redux/display-mode/display-mode.selector';
 import $ from 'jquery';
 
-const GameField = ({ setCurrentRoutines, user }) => {
+
+const GameField = ({ setCurrentRoutines, user, displayMode }) => {
     useEffect(() => {
         const getFetchRoutines = async () => {
             let res;
@@ -24,33 +26,32 @@ const GameField = ({ setCurrentRoutines, user }) => {
                 });
                 const allRoutines = JSON.parse(res).reverse();
                 setCurrentRoutines(allRoutines);
-
             } catch (err) {
                 console.error(
-                    `Error cannot connect with the data base to list all routines ${err}`
+                    `Error cannot connect with the data base to list all routines`, err.message
                 );
                 console.error(res);
                 return;
             }
         }
         getFetchRoutines();
-    }, [setCurrentRoutines, user]);
-
+    }, [user]);
 
 
     return (
-        <div className="game__field">
+        <div className={`game__field ${displayMode}-mode`} >
             <NavigationBar />
-            <main >
-                <Header />
-                <ListRoutine />
+            <main className={displayMode === "light" ? '' : 'bg-dark-p-color'}>
+                <Header className={`${displayMode}-mode`} />
+                <ListRoutine className={displayMode === "light" ? '' : 'bg-dark-s-color'} />
             </main>
-        </div>
+        </div >
     )
 }
 
 const mapStateToProps = createStructuredSelector({
-    user: selectCurrentUser
+    user: selectCurrentUser,
+    displayMode: selectCurrentDisplayMode
 })
 
 const mapDispatchToProps = (dispatch) => ({

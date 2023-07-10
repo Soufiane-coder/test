@@ -12,8 +12,9 @@ import { selectCurrentUser } from "../../redux/user/user.selector";
 import { checkRoutine, removeRoutine, skipRoutine } from "../../redux/routines/routines.actions";
 import { buySkip, addCoin } from '../../redux/user/user.actions';
 import myServer from "../server/server";
+import { selectCurrentDisplayMode } from "../../redux/display-mode/display-mode.selector";
 
-const Routine = ({ user, routine, checkRoutine, removeRoutine, skipRoutine, buySkip, addCoin }) => {
+const Routine = ({ user, routine, checkRoutine, removeRoutine, skipRoutine, buySkip, addCoin, displayMode }) => {
 
     const handleDone = async (event) => {
         const id = event.target.closest('.routine').id;
@@ -29,7 +30,7 @@ const Routine = ({ user, routine, checkRoutine, removeRoutine, skipRoutine, buyS
             checkRoutine(id);
             addCoin();
         } catch (err) {
-            console.error(`Error cannot checked this routine`);
+            console.error(`Error cannot checked this routine`, err.message);
             return;
         }
     }
@@ -37,7 +38,6 @@ const Routine = ({ user, routine, checkRoutine, removeRoutine, skipRoutine, buyS
     const handleSkip = async (event) => {
         const id = event.target.closest('.routine').id;
         try {
-            // const res = 
             await $.ajax({
                 url: `${myServer}/skipTaskDay.php`,
                 method: "get",
@@ -49,7 +49,7 @@ const Routine = ({ user, routine, checkRoutine, removeRoutine, skipRoutine, buyS
             skipRoutine(id);
             buySkip();
         } catch (err) {
-            console.log(`Error cannot send skip sign to the data base`);
+            console.error(`Error cannot send skip sign to the data base`, err.message);
             return;
         }
 
@@ -68,19 +68,13 @@ const Routine = ({ user, routine, checkRoutine, removeRoutine, skipRoutine, buyS
             });
             removeRoutine(id);
         } catch (err) {
-            console.error(`Error cannot checked this routine ${err}`);
+            console.error(`Error cannot checked this routine`, err.message);
             return;
         }
     }
 
-    // const handleUndone = async (event) => {
-    //     // this.setState({
-    //     //     submitted: "0",
-    //     //     combo: `${+this.state.combo - 1}`,
-    //     // });
-    // }
     return (
-        <div className="routine" id={routine.taskId} style={
+        <div className={`routine ${displayMode === "dark" ? 'bg-dark-s-color' : ''}`} id={routine.taskId} style={
             routine.submitted === "1" ? {
                 transform: "translateY(1.5rem)",
                 boxShadow: "0px 2px 5px rgba(0, 0, 0, 0.262)",
@@ -121,7 +115,8 @@ const Routine = ({ user, routine, checkRoutine, removeRoutine, skipRoutine, buyS
 
 const mapStateToProps = createStructuredSelector({
     routinesCollection: selectCurrentRoutines,
-    user: selectCurrentUser
+    user: selectCurrentUser,
+    displayMode: selectCurrentDisplayMode
 })
 
 const mapDispatchToProps = (dispatch) => ({

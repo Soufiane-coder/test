@@ -3,17 +3,20 @@ $emoji-height: 5rem;
 
 @include scale-routine;
 
+$width-routine-card: 40rem;
+
 .routine {
     margin-top: $emoji-height;
     margin-bottom: calc(5rem * var(--scale));
-    background-color: #F2F2F2;
-    width: calc(40rem * var(--scale));
-    max-width: calc(40rem * var(--scale));
+    // background-color: #F2F2F2;
+    width: calc($width-routine-card * var(--scale));
+    max-width: calc($width-routine-card * var(--scale));
     height: calc(25rem * var(--scale));
     border-radius: calc(2rem * var(--scale));
     box-shadow: 0px 11px 14px rgba(0, 0, 0, 0.262);
     position: relative;
     padding: calc(1.5rem * var(--scale));
+    padding-top: 0;
     transition: 1s all;
 
     .important {
@@ -47,11 +50,12 @@ $emoji-height: 5rem;
         overflow: hidden;
         border-radius: calc(1.6rem * var(--scale));
         top: -$emoji-height;
-        right: calc($emoji-height + 10rem * var(--scale));
+        background-color: #1c7430;
+        left: calc($width-routine-card * var(--scale) / 2 - 10rem / 2);
     }
 
     .title {
-        padding-top: calc($emoji-height - 1rem * var(--scale));
+        padding-top: calc($emoji-height * var(--scale));
         font-size: calc(4rem * var(--scale));
         font-weight: 700;
         max-width: 100%;

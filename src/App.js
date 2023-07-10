@@ -8,7 +8,7 @@ import Setting from "./pages/Setting/Setting";
 import { connect } from "react-redux";
 import { selectCurrentUser } from "./redux/user/user.selector";
 import { createStructuredSelector } from "reselect";
-import Routing from "./components/thisRoute/Routing";
+import DisplayModeSwitcher  from './components/DisplayModeSwitcher/DisplayModeSwitcher';
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -16,8 +16,10 @@ class App extends React.Component {
   render() {
     return (
       <>
+        <DisplayModeSwitcher/>
         <HashRouter>
           <Switch>
+            
             <Route exact={true} path="/" component={LandingPage} />
             <Route exact={true} path="/login">
               {!this.props.user ? (
