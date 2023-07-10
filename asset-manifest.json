@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/test/static/css/main.ea9e08e8.css",
-    "main.js": "/test/static/js/main.e2ad0895.js",
+    "main.css": "/test/static/css/main.197d271b.css",
+    "main.js": "/test/static/js/main.21a817c6.js",
     "static/media/DancingScript-VariableFont_wght.ttf": "/test/static/media/DancingScript-VariableFont_wght.3e7e73f4e34e4945f363.ttf",
     "static/media/Quicksand-VariableFont_wght.ttf": "/test/static/media/Quicksand-VariableFont_wght.cf52df73d8529b4815ed.ttf",
     "static/media/undraw_gaming_re_cma2.svg": "/test/static/media/undraw_gaming_re_cma2.43d2e12062ce7b0f584396ddeb06bade.svg",
@@ -25,11 +25,11 @@
     "static/media/done.svg": "/test/static/media/done.0db08473db08dbcd0e33778c3a13af23.svg",
     "static/media/close.svg": "/test/static/media/close.c76ad28c33323dfe86ec1e4bcf9c5b6c.svg",
     "static/media/skip.svg": "/test/static/media/skip.fbb88ebe2a28461c6481dd96245a2340.svg",
-    "main.ea9e08e8.css.map": "/test/static/css/main.ea9e08e8.css.map",
-    "main.e2ad0895.js.map": "/test/static/js/main.e2ad0895.js.map"
+    "main.197d271b.css.map": "/test/static/css/main.197d271b.css.map",
+    "main.21a817c6.js.map": "/test/static/js/main.21a817c6.js.map"
   },
   "entrypoints": [
-    "static/css/main.ea9e08e8.css",
-    "static/js/main.e2ad0895.js"
+    "static/css/main.197d271b.css",
+    "static/js/main.21a817c6.js"
   ]
 }
