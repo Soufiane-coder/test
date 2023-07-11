@@ -82,13 +82,14 @@ body{
     color: white;
 }
 
-// .dark-mode{
-//     color: $color-white-1;
-// }
+.dark-mode{
+    color: $color-white-1 !important;
+}
 
 .bg-dark-p-color{
-    background-color: $color-dark-mode-primary;
+    background-color: $color-dark-mode-primary !important;
 }
+
 .bg-dark-s-color{
-    background-color: $color-dark-mode-secondary;
+    background-color: $color-dark-mode-secondary !important;
 }

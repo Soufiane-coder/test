@@ -6,6 +6,8 @@
     background-color: $color-primary;
     position: relative;
     z-index: 1;
+    color: $color-black-1;
+    transition: all 1s;
     .background-white{
         position: absolute;
         width: 100vw;
@@ -13,6 +15,7 @@
         clip-path: ellipse(50% 50% at 50% 50%);
         background-color: $color-white-1;
         z-index: -1;
+        transition: inherit;
     }
     .triangle-white{
         position: absolute;
@@ -20,6 +23,7 @@
         height: $height-section / 2;
         background-color: $color-white-1;
         z-index: -1;
+        transition: inherit;
     }
     .triangle-up-right{
         top: 0;
