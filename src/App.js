@@ -9,6 +9,7 @@ import { connect } from "react-redux";
 import { selectCurrentUser } from "./redux/user/user.selector";
 import { createStructuredSelector } from "reselect";
 import DisplayModeSwitcher  from './components/DisplayModeSwitcher/DisplayModeSwitcher';
+import NavigationBar from "./components/NavigationBar/NavigationBar";
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -19,7 +20,6 @@ class App extends React.Component {
         <DisplayModeSwitcher/>
         <HashRouter>
           <Switch>
-            
             <Route exact={true} path="/" component={LandingPage} />
             <Route exact={true} path="/login">
               {!this.props.user ? (
@@ -35,7 +35,9 @@ class App extends React.Component {
             <Route exact={true} path="*" component={LandingPage}>
               <div style={{ fontSize: "200px" }}>not found</div>
             </Route>
+            
           </Switch>
+          <NavigationBar/>
         </HashRouter>
       </>
     );

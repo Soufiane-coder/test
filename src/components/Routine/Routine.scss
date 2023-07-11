@@ -1,4 +1,6 @@
 @import "../../style/mixins.scss";
+@import '../../style/mixins.scss';
+
 $emoji-height: 5rem;
 
 @include scale-routine;
@@ -8,7 +10,6 @@ $width-routine-card: 40rem;
 .routine {
     margin-top: $emoji-height;
     margin-bottom: calc(5rem * var(--scale));
-    // background-color: #F2F2F2;
     width: calc($width-routine-card * var(--scale));
     max-width: calc($width-routine-card * var(--scale));
     height: calc(25rem * var(--scale));
@@ -17,8 +18,9 @@ $width-routine-card: 40rem;
     position: relative;
     padding: calc(1.5rem * var(--scale));
     padding-top: 0;
-    transition: 1s all;
-
+    @include transition-for-dark-mode;
+    transition: all 1s;
+    
     .important {
         top: calc(-2.2rem * var(--scale));
         right: calc(1.8rem * var(--scale));

@@ -9,10 +9,8 @@ import Remember from '../../layout/landing-page/Remember/Remember';
 import Footer from '../../layout/landing-page/Footer/Footer';
 
 const LandingPage = () => {
-    const user = localStorage.getItem('user');
     return (
         <div className="container">
-            <NavigationBar user={user} />
             <Header />
             <Quote />
             <ComplateRoutineDescription />

@@ -40,10 +40,9 @@ const GameField = ({ setCurrentRoutines, user, displayMode }) => {
 
     return (
         <div className={`game__field ${displayMode}-mode`} >
-            <NavigationBar />
             <main className={displayMode === "light" ? '' : 'bg-dark-p-color'}>
-                <Header className={`${displayMode}-mode`} />
-                <ListRoutine className={displayMode === "light" ? '' : 'bg-dark-s-color'} />
+                <Header />
+                <ListRoutine />
             </main>
         </div >
     )

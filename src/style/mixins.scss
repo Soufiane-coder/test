@@ -15,6 +15,11 @@
                 }
 }
 
+@mixin transition-for-dark-mode{
+    transition: color 1s;
+    transition: background-color 1s;
+}
+
 @mixin scale-routine{
     :root{
         --scale: 1;
