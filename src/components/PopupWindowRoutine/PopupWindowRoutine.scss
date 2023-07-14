@@ -10,17 +10,6 @@
 //     font-size: 35%;
 // }
 
-@keyframes zoom {
-    0% {
-        width: 100rem;
-        height: 0rem;
-    }
-
-    100% {
-        width: 100rem;
-        height: 50rem;
-    }
-}
 
 .popup {
     position: fixed;
@@ -45,7 +34,6 @@
         display: flex;
         flex-direction: column;
         padding: 3rem;
-        animation: zoom .5s;
         width: 100rem;
         height: 50rem;
         background-color: $color-white-2;

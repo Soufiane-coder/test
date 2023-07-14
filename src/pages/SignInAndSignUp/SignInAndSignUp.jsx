@@ -22,7 +22,6 @@ class SignInAndSignUp extends React.Component {
     render() {
         return (
             <>
-                <NavigationBar />
                 <div className="log-in-log-out">
                     <div className="side-bar" />
                     <div className="side-bar-dark" />

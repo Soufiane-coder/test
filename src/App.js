@@ -19,9 +19,10 @@ class App extends React.Component {
       <>
         <DisplayModeSwitcher/>
         <HashRouter>
+      <NavigationBar/>
           <Switch>
             <Route exact={true} path="/" component={LandingPage} />
-            <Route exact={true} path="/login">
+            <Route exact={true} path="/signin">
               {!this.props.user ? (
                 <SignInAndSignUp />
               ) : (
@@ -29,15 +30,18 @@ class App extends React.Component {
               )}
             </Route>
             <Route exact={true} path="/gameField">
-              {this.props.user ? <GameField /> : <Redirect to="/login" />}
+              {this.props.user ? <GameField /> : <Redirect to="/signin" />}
+            </Route>
+            <Route exact={true} path="/statistics">
+              {this.props.user ? <div>statistic</div> : <Redirect to="/signin" />}
             </Route>
             <Route exact={true} path="/setting" component={Setting} />
-            <Route exact={true} path="*" component={LandingPage}>
+            <Route exact={true} path="*">
               <div style={{ fontSize: "200px" }}>not found</div>
             </Route>
             
           </Switch>
-          <NavigationBar/>
+          
         </HashRouter>
       </>
     );

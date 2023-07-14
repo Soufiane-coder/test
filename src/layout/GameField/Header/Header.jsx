@@ -9,12 +9,15 @@ import { useState } from "react";
 import PopupWindowRoutine from "../../../components/PopupWindowRoutine/PopupWindowRoutine";
 
 const Header = ({ user, routines }) => {
-
     const [popup, setPopup] = useState(false);
+
 
     return (
         <div className="game__field--header">
-            {popup ? <PopupWindowRoutine setPopup={setPopup} /> : null}
+
+            <PopupWindowRoutine {...{ popup, setPopup }} />
+
+
             <div className="user-informations-bar">
                 <div className="tree-lines">
                     <div className="line-one" />

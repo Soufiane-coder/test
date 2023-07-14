@@ -1,60 +1,110 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { ReactComponent as HomePageIcon } from '../../assets/icons/homepage.svg';
 import { ReactComponent as GamePageIcon } from '../../assets/icons/gamepage.svg';
 import { ReactComponent as SignInPageIcon } from '../../assets/icons/sign-in-page.svg';
 import { ReactComponent as SignUpPageIcon } from '../../assets/icons/sign-up-page.svg';
 import { ReactComponent as SettingPageIcon } from '../../assets/icons/setting-page.svg';
+import { ReactComponent as StatisticsIcon } from '../../assets/icons/statistics.svg';
 import './NavigationBar.scss';
 import { withRouter } from 'react-router-dom';
 import { selectCurrentUser } from '../../redux/user/user.selector';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { setCurrentUser } from '../../redux/user/user.actions';
-const NavigationBar = ({ history, user, setCurrentUser }) => {
 
+const NavigationBar = ({ history, user, setCurrentUser }) => {
+    const [isNavOn, setIsNavOn] = useState(false);
+
+    const menuSignedIn = [{
+        label: 'home gol',
+        icon: HomePageIcon,
+        url: '/',
+        action: () => { }
+    }, {
+        label: 'game field',
+        icon: GamePageIcon,
+        url: '/gameField',
+        action: () => { }
+    }, {
+        label: 'statistics',
+        icon: StatisticsIcon,
+        url: '/statistics',
+        action: () => { }
+    }, {
+        label: 'settings',
+        icon: SettingPageIcon,
+        url: '/settings',
+        action: () => { }
+    }, {
+        label: 'log out',
+        icon: SignInPageIcon,
+        url: '/',
+        action: () => setCurrentUser("")
+    }
+    ]
+
+    const menuNotSignedIn = [{
+        label: 'home gol',
+        icon: HomePageIcon,
+        url: '/',
+        action: () => { }
+    }, {
+        label: 'game field',
+        icon: GamePageIcon,
+        url: '/gameField',
+        action: () => { }
+    }, {
+        label: 'sign up',
+        icon: SignUpPageIcon,
+        url: '/signin',
+        action: () => { },
+    }, {
+        label: 'sign in',
+        icon: SignInPageIcon,
+        url: '/signin',
+        action: () => { },
+    }
+    ]
     return (
         <>
             <div className="navigation-bar">
-                <HomePageIcon className='icon' onClick={() => history.push('/')} />
-                <GamePageIcon className='icon' onClick={() => history.push('/gameField')} />
                 {
-                    !user ?
+                    user ? menuSignedIn.map((item, key) => (
                         <>
-                            <SignInPageIcon className='icon' onClick={() => history.push('/login')} />
-                            <SignUpPageIcon className='icon' onClick={() => history.push('/login')} />
+                            <item.icon key={key} className='icon' onClick={() => { history.push(item.url); item.action() }} />
                         </>
+                    ))
                         :
-                        <>
-                            <SettingPageIcon className='icon' onClick={() => history.push('/setting')} />
-                            <SignInPageIcon className='icon' onClick={() => {
-                                setCurrentUser("")
-                                history.push('/');
-                            }} />
-                        </>
+                        menuNotSignedIn.map((item, key) => (
+                            <>
+                                <item.icon key={key} className='icon' onClick={() => { history.push(item.url); item.action() }} />
+                            </>
+                        ))
                 }
             </div>
-            <div className="navigation">
-                <input type="checkbox" className="navigation__checkbox" id="navi-toggle" />
+            <div className="navigation-burger-menu">
+                <input type="checkbox" className="navigation-burger-menu__checkbox" id="navi-toggle" onChange={event => setIsNavOn(event.target.checked)} checked={isNavOn} />
 
-                <label htmlFor="navi-toggle" className="navigation__button">
-                    <span className="navigation__icon">&nbsp;</span>
+                <label htmlFor="navi-toggle" className="navigation-burger-menu__button">
+                    <span className="navigation-burger-menu__icon">&nbsp;</span>
                 </label>
 
-                <div className="navigation__background">&nbsp;</div>
+                <div className="navigation-burger-menu__background">&nbsp;</div>
 
-                <nav className="navigation__nav">
-                    <ul className="navigation__list">
-                        <li className="navigation__item"><div onClick={() => history.push('/')} className="navigation__link"> Home GOL </div></li>
-                        <li className="navigation__item"><div className="navigation__link" onClick={() => history.push('/gameField')} >game field</div></li>
+                <nav className="navigation-burger-menu__nav">
+                    <ul className="navigation-burger-menu__list">
+
                         {
-                            !user ?
+                            user ? menuSignedIn.map((item, index) => (
                                 <>
-                                    <li className="navigation__item"><div className="navigation__link" onClick={() => history.push('/login')} >sign in</div></li>
-                                    <li className="navigation__item"><div className="navigation__link" onClick={() => history.push('/login')} >sign up</div></li></> :
-                                <li className="navigation__item"><div className="navigation__link" onClick={() => {
-                                    setCurrentUser("")
-                                    history.push('/')
-                                }} >sign out</div></li>
+                                    <li className="navigation-burger-menu__item" key={index}><div className="navigation-burger-menu__link" onClick={() => { history.push(item.url); setIsNavOn(false); item.action(); }} >{item.label}</div></li>
+                                </>))
+                                :
+                                menuNotSignedIn.map((item, index) => (
+                                    <>
+                                        <li className="navigation-burger-menu__item" key={index}><div className="navigation-burger-menu__link" onClick={() => { history.push(item.url); setIsNavOn(false); item.action(); }} >{item.label}</div></li>
+                                    </>
+                                ))
                         }
 
                     </ul>

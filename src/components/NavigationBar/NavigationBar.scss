@@ -1,59 +1,69 @@
 @import '../../style/variables.scss';
 
-$width-navigation: 15rem;
-$height-navigation: 32rem;
+$width-navigation: 7rem;
+$demension-icon: 8rem;
 
 .navigation-bar{
     z-index: 1000;
+    padding: .7rem;
+    padding-right: 0;
     position: fixed;
-    width: $width-navigation;
-    right: -$width-navigation / 2;
-    top: $width-navigation / 2;
-    height: $height-navigation;
-    padding: 25px 10px;
+    width: fit-content;
+    right: 0;
+    top: $demension-icon;
     background-color: $color-secondary;
-    border-radius: 50px;
+    border-radius: 6rem 0 0 6rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
     .icon{
         display: inline-block;
-        padding: 5px 0px;
-        margin-right: auto;
-        .cls-1{
-            fill: $color-white-1;
+
+        padding: 5px;
+
+        height: $demension-icon;
+        width: $demension-icon;
+
+        fill: $color-white-1 !important;
+        &, circle{
+        stroke: $color-white-1 !important;
         }
         &:hover{
             cursor: pointer;
         }
+    
     }
 }
-.navigation{
+.navigation-burger-menu{
     display: none;
 }
 
 @media  (max-width: 768px) {
     .navigation-bar{
-        opacity: 0;
-        visibility: hidden;
-        width: 0;
-        height: 0;
         display: none;
         
     }
-    .navigation {
+
+    .navigation-burger-menu{
+        $menu-position-top: 8rem ;
+        $menu-position-right: 6rem ;
+
+        $burger-menu-height: 8rem;
+        $burger-menu-width: 8rem;
+
         display: block;
         &__checkbox {
-            display: none;
+            display: none; // this is the checkbox to verify if the menu is opend or closed
         }
     
-        &__button {
-            background-color: $color-white-1;
-            height: 8rem ;
-            width: 8rem;
+        &__button { // this is the button that when we click on it the background get full of page
+            background-color: $color-secondary;
+            height: $burger-menu-height ;
+            width: $burger-menu-width;
             position: fixed;
-            top: 8rem ;
-            right: 6rem ;
+            top: $menu-position-top ;
+            right: $menu-position-right ;
             border-radius: 50%;
             z-index: 5000;
             box-shadow: 0 1rem * 1.5 3rem * 1.5 rgba($color-black-1, .2);
@@ -61,13 +71,13 @@ $height-navigation: 32rem;
             cursor: pointer;
         }
     
-        &__background {
-            height: 6rem;
-            width: 6rem;
+        &__background { // this is the background that it get stretch to fill the page
+            height: $burger-menu-height;
+            width: $burger-menu-width;
             border-radius: 50%;
             position: fixed;
-            top: 9rem ;
-            right: 6.5rem ;
+            top: $menu-position-top ;
+            right: $menu-position-right ;
             background-image: radial-gradient($color-primary, $color-primary-dark);
             z-index: 1000;
             transition: transform .8s cubic-bezier(0.86, 0, 0.07, 1);
@@ -79,10 +89,10 @@ $height-navigation: 32rem;
             top: 0;
             left: 0;
             z-index: 1500;
-    
             opacity: 0;
             width: 0;
-            transition: all .8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            overflow: hidden;
+            transition: opacity .5s, width 1s; // when it is unchecked do the transtion without delay
         }
     
         &__list {
@@ -96,72 +106,48 @@ $height-navigation: 32rem;
         }
     
         &__item {
-            margin: 1rem * 1.5;
+            margin: 1.5rem;
         }
-    
-        &__link {
-            &:link,
-            &:visited {
-                opacity: 0;
-                width: 0;
-                height: 0;
-                visibility: hidden;
-                display: none;
-            }
-            
-            &:hover,
-            &:active {
-                background-position: 100%;
-                color: $color-primary;
-                transform: translateX(1rem * 1.5);
-            }
+
+        &__link{
+            width: auto;
+            height: auto;
+            visibility:visible;
+            display: inline-block;
+            font-size: 4.5rem;
+            font-weight: 300;
+            padding: 1.5rem 3rem;
+            color: $color-white-1;
+            text-decoration: none;
+            text-transform: uppercase;
         }
     
     
         //FUNCTIONALITY
         &__checkbox:checked ~ &__background {
-            transform: scale(80);
+            transform: scale(40)
         }
-    
+
         &__checkbox:checked ~ &__nav {
             opacity: 1;
             width: 100%;
-        }
-
-        &__checkbox:checked ~ &__nav &__link{
-            opacity: 1;
-            width: auto;
-            height: auto;
-            visibility:visible;
-            display: inline-block;
-            font-size: 3rem * 1.5;
-            font-weight: 300;
-            padding: 1rem * 1.5 2rem * 1.5;
-            color: $color-white-1;
-            text-decoration: none;
-            text-transform: uppercase;
-            background-image: linear-gradient(120deg, transparent 0%, transparent 50%, $color-white-1 50%);
-            background-size: 220%;
-            transition: all .4s;
-
-            span {
-                margin-right: 1.5rem * 1.5;
-                display: inline-block;
-            }
+            transition: opacity .5s .5s; // when it checked do the transition with the delay
         }
     
     
         //ICON
         &__icon {
-            position: relative;
-            margin-top: 4.2rem;
-    
+            position: absolute;
+            top: 50%;  
+            right: 50%;
+            transform: translate(50%, 50%);
+
             &,
             &::before,
             &::after {
-                width: 3rem * 1.5;
-                height: 2px;
-                background-color: $color-black-2;
+                width: 4.5rem;
+                height: 3px;
+                background-color: $color-white-1;
                 display: inline-block;
             }
     
@@ -173,16 +159,16 @@ $height-navigation: 32rem;
                 transition: all .2s;
             }
     
-            &::before { top: -.8rem * 1.5; }
-            &::after { top: .8rem * 1.5; }
+            &::before { top: -1.8rem; } // this is the top top bread of the burger menu
+            &::after { top: 1.8rem; } // this is the top bottom bread of the burger menu
         }
     
         &__button:hover &__icon::before {
-            top: -1rem * 1.5;
+            top: -1.5rem;
         }
     
         &__button:hover &__icon::after {
-            top: 1rem * 1.5;
+            top: 1.5rem;
         }
     
         &__checkbox:checked + &__button &__icon {
@@ -198,5 +184,6 @@ $height-navigation: 32rem;
             top: 0;
             transform: rotate(-135deg);
         }
+        
     }
 }
