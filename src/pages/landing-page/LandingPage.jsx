@@ -1,7 +1,6 @@
 import React from 'react';
 import './LandingPage.scss'
 import Header from '../../layout/landing-page/Header/Header'
-import NavigationBar from '../../components/NavigationBar/NavigationBar';
 import Quote from '../../layout/landing-page/Quote/Quote';
 import ComplateRoutineDescription from '../../layout/landing-page/ComplateRoutineDescription/ComplateRoutineDescription';
 import RoutineDescription2 from '../../layout/landing-page/RoutineDescription2/RoutineDescription2';

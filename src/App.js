@@ -1,5 +1,5 @@
 import "./App.scss";
-import React from "react";
+import React , {useState} from "react";
 import { Switch, Route, Redirect, HashRouter } from "react-router-dom";
 import LandingPage from "./pages/landing-page/LandingPage";
 import SignInAndSignUp from "./pages/SignInAndSignUp/SignInAndSignUp";
@@ -10,30 +10,30 @@ import { selectCurrentUser } from "./redux/user/user.selector";
 import { createStructuredSelector } from "reselect";
 import DisplayModeSwitcher  from './components/DisplayModeSwitcher/DisplayModeSwitcher';
 import NavigationBar from "./components/NavigationBar/NavigationBar";
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
+import { selectCurrentDisplayMode } from "./redux/display-mode/display-mode.selector";
+
+const App = ({user, displayMode}) => {
     return (
-      <>
+      <div id={displayMode}>
         <DisplayModeSwitcher/>
         <HashRouter>
-      <NavigationBar/>
+        <NavigationBar/>
           <Switch>
-            <Route exact={true} path="/" component={LandingPage} />
+            <Route exact={true} path="/">
+              <LandingPage/>
+            </Route>
             <Route exact={true} path="/signin">
-              {!this.props.user ? (
-                <SignInAndSignUp />
+              {!user ? (
+                <SignInAndSignUp/>
               ) : (
                 <Redirect to="/gameField" />
               )}
             </Route>
             <Route exact={true} path="/gameField">
-              {this.props.user ? <GameField /> : <Redirect to="/signin" />}
+              {user ? <GameField /> : <Redirect to="/signin" />}
             </Route>
             <Route exact={true} path="/statistics">
-              {this.props.user ? <div>statistic</div> : <Redirect to="/signin" />}
+              {user ? <div>statistic</div> : <Redirect to="/signin" />}
             </Route>
             <Route exact={true} path="/setting" component={Setting} />
             <Route exact={true} path="*">
@@ -43,13 +43,13 @@ class App extends React.Component {
           </Switch>
           
         </HashRouter>
-      </>
+      </div>
     );
   }
-}
 
 const mapStateToProps = createStructuredSelector({
   user: selectCurrentUser,
+  displayMode: selectCurrentDisplayMode,
 });
 
 export default connect(mapStateToProps)(App);

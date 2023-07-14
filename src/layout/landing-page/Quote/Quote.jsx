@@ -2,7 +2,6 @@ import React from 'react';
 
 import './Quote.scss';
 import Fade from 'react-reveal/Fade';
-import { connect } from 'react-redux';
 
 const Quote = () => (
     <div className="quote-section">
@@ -20,4 +19,4 @@ const Quote = () => (
 )
 
 
-export default connect()(Quote);
+export default Quote;

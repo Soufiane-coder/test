@@ -70,15 +70,15 @@ const NavigationBar = ({ history, user, setCurrentUser }) => {
             <div className="navigation-bar">
                 {
                     user ? menuSignedIn.map((item, key) => (
-                        <>
-                            <item.icon key={key} className='icon' onClick={() => { history.push(item.url); item.action() }} />
-                        </>
+
+                        <item.icon key={key + '_in'} className='icon' onClick={() => { history.push(item.url); item.action() }} />
+
                     ))
                         :
                         menuNotSignedIn.map((item, key) => (
-                            <>
-                                <item.icon key={key} className='icon' onClick={() => { history.push(item.url); item.action() }} />
-                            </>
+
+                            <item.icon key={key} className='icon' onClick={() => { history.push(item.url); item.action() }} />
+
                         ))
                 }
             </div>
@@ -95,15 +95,15 @@ const NavigationBar = ({ history, user, setCurrentUser }) => {
                     <ul className="navigation-burger-menu__list">
 
                         {
-                            user ? menuSignedIn.map((item, index) => (
-                                <>
-                                    <li className="navigation-burger-menu__item" key={index}><div className="navigation-burger-menu__link" onClick={() => { history.push(item.url); setIsNavOn(false); item.action(); }} >{item.label}</div></li>
-                                </>))
+                            user ? menuSignedIn.map((item, key) => (
+
+                                <li className="navigation-burger-menu__item" key={key + '_in'}><div className="navigation-burger-menu__link" onClick={() => { history.push(item.url); setIsNavOn(false); item.action(); }} >{item.label}</div></li>
+                            ))
                                 :
-                                menuNotSignedIn.map((item, index) => (
-                                    <>
-                                        <li className="navigation-burger-menu__item" key={index}><div className="navigation-burger-menu__link" onClick={() => { history.push(item.url); setIsNavOn(false); item.action(); }} >{item.label}</div></li>
-                                    </>
+                                menuNotSignedIn.map((item, key) => (
+
+                                    <li className="navigation-burger-menu__item" key={key}><div className="navigation-burger-menu__link" onClick={() => { history.push(item.url); setIsNavOn(false); item.action(); }} >{item.label}</div></li>
+
                                 ))
                         }
 

@@ -1,11 +1,12 @@
 .switch{
       margin-top: 3rem;
       font-size: 17px;
-      position: absolute;
+      position: fixed;
       left: 10rem;
       display: inline-block;
       width: 64px;
       height: 34px;
+      z-index: 1000000;
       
       
       input {

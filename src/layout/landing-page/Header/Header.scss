@@ -39,3 +39,19 @@
     }
     
 }
+
+#light .header{
+    background-color: $color-primary;
+    color: $color-black-1;
+    .background-white, & .triangle-white{
+        background-color: $color-white-1;
+    }
+}
+
+#dark .header{
+    background-color: $color-primary;
+    color: $color-white-1;
+    .background-white, & .triangle-white{
+        background-color: $color-dark-mode-primary;
+    }
+}

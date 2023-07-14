@@ -1,12 +1,14 @@
 @import '../../../style/variables.scss';
 @import '../../../style/mixins.scss';
+
 .routine__description2{
     display: flex;
     align-items:center;
     justify-content: center;
     background-color: $color-white-1;
-    padding: 0rem * 1.5 7rem * 1.5;
+    padding: 0 7rem * 1.5;
     padding-bottom: 5rem * 1.5;
+    transition: background-color 1s;
     @media (max-width: 760px) {
         flex-direction: column;
     }
@@ -29,11 +31,11 @@
     }
 
     &__coins--titre{
-        @include description-titre;
+        @include description-title;
         
     }
     &__inspired--titre{
-        @include description-titre;
+        @include description-title;
     }
 
     &__inspired--description, &__coins--description{
@@ -41,9 +43,34 @@
         display: inline-block;
         width: 80%;
         font-size: 2.5rem;
+        transition: color 1s;
         @media (max-width: 760px) {
             width: 90%;
             text-align: justify;
         }
+    }
+}
+
+#light .routine__description2{
+    background-color: $color-white-1;
+    &__coins--titre{
+        @include description-title-light;
+        
+    }
+    &__inspired--titre{
+        @include description-title-light;
+    }
+}
+
+#dark .routine__description2{
+    background-color: $color-dark-mode-primary;
+    &__coins--titre{
+        @include description-title-dark;
+    }
+    &__inspired--titre{
+        @include description-title-dark;
+    }
+    &__inspired--description, &__coins--description{
+        color: $color-white-1;
     }
 }

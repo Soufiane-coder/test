@@ -6,6 +6,7 @@
     position: relative;
     z-index: -1;
     color: $color-white-1;
+    transition: all 1s;
     .background-oval{
         position: absolute;
         width: 100vw;
@@ -52,4 +53,12 @@
             font-size: 1.4rem * 1.5;
         }
     }
+}
+
+#light .quote-section{
+    background-color: $color-white-1;
+}
+
+#dark .quote-section{
+    background-color: $color-dark-mode-primary;
 }
