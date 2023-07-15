@@ -7,6 +7,8 @@ import { selectCurrentUser } from "../../../redux/user/user.selector";
 import { selectCurrentRoutines } from '../../../redux/routines/routines.selector';
 import { useState } from "react";
 import PopupWindowRoutine from "../../../components/PopupWindowRoutine/PopupWindowRoutine";
+import Filter from '../../../components/Filter/Filter';
+
 
 const Header = ({ user, routines }) => {
     const [popup, setPopup] = useState(false);
@@ -57,6 +59,7 @@ const Header = ({ user, routines }) => {
                     <label className="filter-item completed" htmlFor="completed"> Completed <span className="tag">0</span></label>
                     <span className="selector"></span>
                 </div>
+                <Filter />
                 <button onClick={() => setPopup(true)}>+ Add Routine</button>
             </div>
         </div >
