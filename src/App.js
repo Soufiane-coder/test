@@ -1,5 +1,4 @@
 import "./App.scss";
-import React , {useState} from "react";
 import { Switch, Route, Redirect, HashRouter } from "react-router-dom";
 import LandingPage from "./pages/landing-page/LandingPage";
 import SignInAndSignUp from "./pages/SignInAndSignUp/SignInAndSignUp";
@@ -35,7 +34,7 @@ const App = ({user, displayMode}) => {
             <Route exact={true} path="/statistics">
               {user ? <div>statistic</div> : <Redirect to="/signin" />}
             </Route>
-            <Route exact={true} path="/setting" component={Setting} />
+            <Route exact={true} path="/settings" component={Setting} />
             <Route exact={true} path="*">
               <div style={{ fontSize: "200px" }}>not found</div>
             </Route>

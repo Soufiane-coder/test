@@ -45,10 +45,10 @@ const Header = ({ user, routines }) => {
             <div className="filter-and-adding-button">
                 <div className="filter">
                     <input type="radio" name="filter" id="all" />
-                    <label className="filter-item all" htmlFor="all">All <span className="tag">0</span></label>
+                    <label className="filter-item all" htmlFor="all">All routine <span className="tag">0</span></label>
 
-                    <input type="radio" name="filter" id="important" />
-                    <label className="filter-item important" htmlFor="important"> Important <span className="tag">0</span></label>
+                    <input type="radio" name="filter" id="_important" />
+                    <label className="filter-item important" htmlFor="_important">Important <span className="tag">0</span></label>
 
                     <input type="radio" name="filter" id="waiting" />
                     <label className="filter-item waiting" htmlFor="waiting"> Waiting <span className="tag">0</span></label>

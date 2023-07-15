@@ -2,13 +2,13 @@ import './DisplayModeSwitcher.scss';
 import { connect } from 'react-redux';
 import { selectCurrentDisplayMode } from '../../redux/display-mode/display-mode.selector';
 import { setDisplayModeTo } from '../../redux/display-mode/display-mode.action';
-import { displayModes } from '../../enums/displayModes';
+
 import { createStructuredSelector } from 'reselect';
 const DisplayModeSwitcher = ({ displayMode, setDisplayModeTo }) => {
     const handleChange = (event) => {
         const { target: { checked }
         } = event;
-        setDisplayModeTo(checked ? displayModes.dark : displayModes.light)
+        setDisplayModeTo(checked ? 'dark' : 'light')
     }
     return (
         <label className="switch">

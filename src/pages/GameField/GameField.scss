@@ -4,6 +4,7 @@
 .game__field{
     display: flex;
     background-color: $color-white-1;
+    transition: background-color 1s;
     
     main{
         padding: 3rem;
@@ -12,7 +13,14 @@
             padding-right: 0px;
         }
         width: 100%;
-        @include transition-for-dark-mode;
         
     }
+}
+
+#light .game__field{
+    background-color: $color-white-1;
+}
+
+#dark .game__field{
+    background-color: $color-dark-mode-primary;
 }

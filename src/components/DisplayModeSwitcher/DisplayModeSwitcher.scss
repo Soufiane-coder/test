@@ -7,7 +7,9 @@
       width: 64px;
       height: 34px;
       z-index: 1000000;
-      
+      &:hover{
+        cursor: pointer;
+      }
       
       input {
         opacity: 0;

@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import NavigationBar from '../../components/NavigationBar/NavigationBar';
 import Header from '../../layout/GameField/Header/Header';
 import './GameField.scss';
 import ListRoutine from '../../layout/GameField/ListRoutine/ListRoutine';
