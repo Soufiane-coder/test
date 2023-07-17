@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/test/static/css/main.197d271b.css",
-    "main.js": "/test/static/js/main.21a817c6.js",
+    "main.css": "/test/static/css/main.314097ea.css",
+    "main.js": "/test/static/js/main.abecd6db.js",
     "static/media/DancingScript-VariableFont_wght.ttf": "/test/static/media/DancingScript-VariableFont_wght.3e7e73f4e34e4945f363.ttf",
     "static/media/Quicksand-VariableFont_wght.ttf": "/test/static/media/Quicksand-VariableFont_wght.cf52df73d8529b4815ed.ttf",
     "static/media/undraw_gaming_re_cma2.svg": "/test/static/media/undraw_gaming_re_cma2.43d2e12062ce7b0f584396ddeb06bade.svg",
@@ -15,21 +15,24 @@
     "static/media/setting-page.svg": "/test/static/media/setting-page.104a3f4d40f19b999c742b08e6660462.svg",
     "static/media/gamepage.svg": "/test/static/media/gamepage.184c8e90ab6c59e1212f295d60ba6211.svg",
     "static/media/sign-in-page.svg": "/test/static/media/sign-in-page.751ce0c8ac16322430b974be442f5756.svg",
-    "static/media/sheet.svg": "/test/static/media/sheet.5f6deab9a9e7e2d59ab87c616819b7b6.svg",
+    "static/media/sheet.svg": "/test/static/media/sheet.2730ba83d1d27d9eaec7aa87f2511e28.svg",
     "static/media/sign-up-page.svg": "/test/static/media/sign-up-page.bacd9fc711dc7d31589fbb65d8ed3fd9.svg",
     "static/media/homepage.svg": "/test/static/media/homepage.e8a83df5c9f7cda0afd5e5a76373de6a.svg",
     "static/media/coin-icon.svg": "/test/static/media/coin-icon.45797b274b0609f285fae588bd3a441f.svg",
+    "static/media/statistics.svg": "/test/static/media/statistics.fec23e23bae5f50d7e9668fa7f91845d.svg",
     "index.html": "/test/index.html",
+    "static/media/message.svg": "/test/static/media/message.f2c1565038aab0930253a4beb33b869a.svg",
+    "static/media/filter.svg": "/test/static/media/filter.9c1888f0ced9de775f8fdfabf0d142b1.svg",
     "static/media/remove.svg": "/test/static/media/remove.f1f3319782c354a221d5a2c19e36ed29.svg",
     "static/media/undone.svg": "/test/static/media/undone.c69dfb39e6a781cd09143af4502b89f7.svg",
     "static/media/done.svg": "/test/static/media/done.0db08473db08dbcd0e33778c3a13af23.svg",
     "static/media/close.svg": "/test/static/media/close.c76ad28c33323dfe86ec1e4bcf9c5b6c.svg",
     "static/media/skip.svg": "/test/static/media/skip.fbb88ebe2a28461c6481dd96245a2340.svg",
-    "main.197d271b.css.map": "/test/static/css/main.197d271b.css.map",
-    "main.21a817c6.js.map": "/test/static/js/main.21a817c6.js.map"
+    "main.314097ea.css.map": "/test/static/css/main.314097ea.css.map",
+    "main.abecd6db.js.map": "/test/static/js/main.abecd6db.js.map"
   },
   "entrypoints": [
-    "static/css/main.197d271b.css",
-    "static/js/main.21a817c6.js"
+    "static/css/main.314097ea.css",
+    "static/js/main.abecd6db.js"
   ]
 }
